@@ -63,17 +63,21 @@ Rectangle {
             if (mouseEnteredX- mouseX > appWidth/3) {
                 switch (currentPage) {
                 case "MainMenu":
+                    changeTabToRightAnimation.start()
                     currentPage="MonthCalendar"
                     break;
                 case "MonthCalendar":
+                    changeTabToRightAnimation.start()
                     currentPage = "DaySwitch"
                     break;
                 case "DaySwitch":
+                    changeTabToRightAnimation.start()
                     currentPage = "Others"
                     break;
                 case "Others":
                     break;
                 default:
+                    changeTabToRightAnimation.start()
                     currentPage="MonthCalendar"
                     break;
                 }
@@ -81,18 +85,22 @@ Rectangle {
             }
             else if (mouseEnteredX < 7 && mouseX- mouseEnteredX > appWidth/5) {
                 showSubMenuAnimation.start()
+                submenuClockwiseRotation.start()
                 mouseEnteredX= -1;
                 mouseArea1.enabled= false;
             }
             else if (mouseX- mouseEnteredX > appWidth/3) {
                 switch (currentPage) {
                 case "Others":
+                    changeTabToLeftAnimation.start()
                     currentPage= "DaySwitch"
                     break;
                 case "DaySwitch":
+                    changeTabToLeftAnimation.start()
                     currentPage= "MonthCalendar"
                     break;
                 case "MonthCalendar":
+                    changeTabToLeftAnimation.start()
                     currentPage= "MainMenu";
                     break;
                 default:
@@ -103,9 +111,6 @@ Rectangle {
         }
 
         onClicked: {
-            if (Math.abs(mouseX-mouseEnteredX) <10 && Math.abs(mouseY- mouseEnteredY)< 10) {
-                //subMenu.visible= false
-            }
         }
 
     }
@@ -116,6 +121,7 @@ Rectangle {
         enabled: !(mouseArea1.enabled)
         onClicked: {
             hideSubMenuAnimation.start()
+            submenuUnclockwiseRotation.start()
             mouseArea1.enabled= true;
         }
     }
@@ -123,16 +129,41 @@ Rectangle {
 
 
     ImageButton {
-        id: today;
+        id: todayButton;
         anchors.right: parent.right
         anchors.rightMargin: width/5
         anchors.top: parent.top
         anchors.topMargin: height/4
         width: appWidth/6
         height: appHight/15
-        source: "/images/images.jpeg"
+        source: "/images/today.png"
         onClicked: {
             currentPage= "MainMenu"
+            subMenuButton.rotation= 0;
+            subMenu.x= (0- subMenu.width)
+            mouseArea1.enabled= true
+        }
+    }
+
+    ImageButton {
+        id: subMenuButton
+        anchors.top: todayButton.top
+        anchors.left: parent.left
+        anchors.leftMargin: todayButton.width/5
+        height: todayButton.height
+        width: height
+        source: "/images/submenu.png"
+        onClicked: {
+            if (subMenu.x===0) {
+                hideSubMenuAnimation.start()
+                submenuUnclockwiseRotation.start()
+                mouseArea1.enabled= true
+            }
+            else {
+                showSubMenuAnimation.start()
+                submenuClockwiseRotation.start()
+                mouseArea1.enabled= false;
+            }
         }
     }
 
@@ -141,13 +172,13 @@ Rectangle {
         height: appHight/10
         width: appWidth
         spacing: 0
+        enabled: mouseArea1.enabled
         Button{
             id: dayCalendar
             width: parent.width/4
             height: parent.height
             text: "Lịch ngày"
             onClicked: {
-                console.log(appHight + "  " + appWidth)
                 currentPage = "MainMenu"
             }
         }
@@ -183,9 +214,9 @@ Rectangle {
     Rectangle {
         id: subMenu
         x: 0- width
-        y: today.height*1.5
+        y: todayButton.height*1.5
         width: appWidth/2.7
-        height: appHight- today.height*1.5
+        height: appHight- todayButton.height*1.5
         color: "red"
     }
 
@@ -194,6 +225,8 @@ Rectangle {
     Rectangle {
         id: animationRec
         x: 0-width
+        y: subMenu.y
+        opacity: 0.5
         width: appWidth
         height: subMenu.height- dayCalendar.height
         color: "brown"
@@ -201,11 +234,20 @@ Rectangle {
 
     // animation cua viec chuyen tab
     NumberAnimation {
-        id: changeTabAnimation
+        id: changeTabToRightAnimation
         target: animationRec
         property: "x"
-        from: 0- animationRec.width
-        to: 0
+        from: 0
+        to: 0 - animationRec.width
+        duration: 200
+        easing.type: Easing.InOutQuad
+    }
+    NumberAnimation {
+        id: changeTabToLeftAnimation
+        target: animationRec
+        property: "x"
+        from: 0
+        to: animationRec.width
         duration: 200
         easing.type: Easing.InOutQuad
     }
@@ -228,6 +270,27 @@ Rectangle {
         property: "x"
         from: 0
         to: 0- subMenu.width
+        duration: 300
+        easing.type: Easing.InOutQuad
+    }
+
+    // hieu ung xoay cua submenu button
+    // show submenu
+    NumberAnimation {
+        id: submenuClockwiseRotation
+        target: subMenuButton
+        property: "rotation"
+        from: 0
+        to: 90
+        duration: 300
+        easing.type: Easing.InOutQuad
+    }
+    NumberAnimation {
+        id: submenuUnclockwiseRotation
+        target: subMenuButton
+        property: "rotation"
+        from: 90
+        to: 0
         duration: 300
         easing.type: Easing.InOutQuad
     }

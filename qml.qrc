@@ -6,6 +6,7 @@
         <file>qml/DaySwitch.qml</file>
         <file>qml/Others.qml</file>
         <file>qml/ImageButton.qml</file>
-        <file>images/images.jpeg</file>
+        <file>images/today.png</file>
+        <file>images/submenu.png</file>
     </qresource>
 </RCC>

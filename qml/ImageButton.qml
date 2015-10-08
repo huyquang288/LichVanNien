@@ -2,8 +2,8 @@ import QtQuick 2.0
 
 Item{
     id: imagebutton
-    height: image.sourceSize.height
-    width: image.sourceSize.width
+    //height: image.sourceSize.height
+    //width: image.sourceSize.width
 
     property string source
     signal clicked()
