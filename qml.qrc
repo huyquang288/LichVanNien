@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>qml/MainMenu.qml</file>
+        <file>qml/MonthCalendar.qml</file>
+        <file>qml/DaySwitch.qml</file>
+        <file>qml/Others.qml</file>
+        <file>qml/ImageButton.qml</file>
+        <file>images/images.jpeg</file>
+    </qresource>
+</RCC>
