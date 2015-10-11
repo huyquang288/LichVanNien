@@ -1,10 +1,7 @@
-import QtQuick 2.0
+import QtQuick 2.4
 
 Item{
     id: imagebutton
-    //height: image.sourceSize.height
-    //width: image.sourceSize.width
-
     property string source
     signal clicked()
 

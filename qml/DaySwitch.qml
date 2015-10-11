@@ -1,8 +1,18 @@
-import QtQuick 2.0
+import QtQuick 2.4
 
-Rectangle {
-    width: 100
-    height: 62
-    color: "white"
+Item {
+    id: daySwi
+    signal clicked ()
+    Rectangle {
+        color: "yellow"
+        anchors.fill: parent
+        MouseArea {
+            //anchors.fill: parent
+            onClicked: {
+                daySwi.clicked ()
+
+            }
+        }
+    }
 }
 

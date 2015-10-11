@@ -1,15 +1,15 @@
 import QtQuick 2.4
 
 Item {
-    id: oth
+    id: dayCal
     signal clicked ()
     Rectangle {
-        color: "skyblue"
+        color: "grey"
         anchors.fill: parent
         MouseArea {
             //anchors.fill: parent
             onClicked: {
-                oth.clicked ()
+                dayCal.clicked ()
 
             }
         }

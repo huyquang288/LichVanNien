@@ -4,23 +4,20 @@ import QtQuick.Window 2.2
 
 Rectangle {
     id: main_rectangle;
-    width: 360;
-    height: 640;
     color: "#252443"
 
     // khai bao bien
     property int appHight: main_rectangle.height
     property int appWidth: main_rectangle.width
+    property string currentTab: "dayCalendarTab"
     property double mouseEnteredX: -1
-    property double mouseEnteredY: -1
-
+    property int numberOfTabs: 5
+    //property double mouseEnteredY: -1
 
     // Put the name of the QML files containing your pages (without the '.qml')
     property variant pagesList  : [
         "MainMenu",
-        "MonthCalendar",
-        "DaySwitch",
-        "Others"
+        "About"
     ];
 
 
@@ -48,7 +45,7 @@ Rectangle {
 
     Component.onCompleted: {
         //DbE.reloadCategoriesList();
-    }
+    }    
 
     MouseArea {
         id: mouseArea1;
@@ -56,31 +53,12 @@ Rectangle {
         enabled: true;
         onEntered:  {
             mouseEnteredX= mouseX
-            mouseEnteredY= mouseY
+            //mouseEnteredY= mouseY
         }
 
         onReleased: {
             if (mouseEnteredX- mouseX > appWidth/3) {
-                switch (currentPage) {
-                case "MainMenu":
-                    changeTabToRightAnimation.start()
-                    currentPage="MonthCalendar"
-                    break;
-                case "MonthCalendar":
-                    changeTabToRightAnimation.start()
-                    currentPage = "DaySwitch"
-                    break;
-                case "DaySwitch":
-                    changeTabToRightAnimation.start()
-                    currentPage = "Others"
-                    break;
-                case "Others":
-                    break;
-                default:
-                    changeTabToRightAnimation.start()
-                    currentPage="MonthCalendar"
-                    break;
-                }
+                changeTabToRight()
                 mouseEnteredX= -1;
             }
             else if (mouseEnteredX < 7 && mouseX- mouseEnteredX > appWidth/5) {
@@ -90,34 +68,17 @@ Rectangle {
                 mouseArea1.enabled= false;
             }
             else if (mouseX- mouseEnteredX > appWidth/3) {
-                switch (currentPage) {
-                case "Others":
-                    changeTabToLeftAnimation.start()
-                    currentPage= "DaySwitch"
-                    break;
-                case "DaySwitch":
-                    changeTabToLeftAnimation.start()
-                    currentPage= "MonthCalendar"
-                    break;
-                case "MonthCalendar":
-                    changeTabToLeftAnimation.start()
-                    currentPage= "MainMenu";
-                    break;
-                default:
-                    break;
-                }
+                changeTabToLeft();
                 mouseEnteredX= -1;
             }
         }
-
-        onClicked: {
-        }
-
     }
 
     MouseArea {
         id: mouseArea2;
-        anchors.fill: parent
+        width: appWidth- subMenu.width
+        height: appHight
+        anchors.right: parent.right
         enabled: !(mouseArea1.enabled)
         onClicked: {
             hideSubMenuAnimation.start()
@@ -126,30 +87,27 @@ Rectangle {
         }
     }
 
-
-
-    ImageButton {
+    ImageButton{
         id: todayButton;
-        anchors.right: parent.right
-        anchors.rightMargin: width/5
-        anchors.top: parent.top
-        anchors.topMargin: height/4
+        x: appWidth- width*1.2
+        y: height/4
         width: appWidth/6
         height: appHight/15
         source: "/images/today.png"
         onClicked: {
-            currentPage= "MainMenu"
+            hideAllTabs()
+            dayCalendarTab.visible= true
             subMenuButton.rotation= 0;
             subMenu.x= (0- subMenu.width)
+            changeTabByClick.start()
             mouseArea1.enabled= true
         }
     }
 
     ImageButton {
         id: subMenuButton
-        anchors.top: todayButton.top
-        anchors.left: parent.left
-        anchors.leftMargin: todayButton.width/5
+        x: todayButton.width/5
+        y: height/4
         height: todayButton.height
         width: height
         source: "/images/submenu.png"
@@ -167,57 +125,134 @@ Rectangle {
         }
     }
 
+    // day calendar tab
+    DayCalendar {
+        id: dayCalendarTab
+        x: 0
+        y: subMenu.y
+        width: appWidth
+        height: subMenu.height- dayCalendarButton.height
+        onClicked: {
+            color: "white"
+        }
+    }
+
+    // month calendar tab
+    MonthCalendar {
+        id: monthCalendarTab
+        x: 0
+        y: subMenu.y
+        width: appWidth
+        height: subMenu.height- dayCalendarButton.height
+        visible: false
+    }
+
+    // doi ngay
+    DaySwitch {
+        id: daySwitchTab
+        x: 0
+        y: subMenu.y
+        width: appWidth
+        height: subMenu.height- dayCalendarButton.height
+        visible: false
+    }
+
+    // gio quoc te
+    WorldClock {
+        id: worldClockTab
+        x: 0
+        y: subMenu.y
+        width: appWidth
+        height: subMenu.height- dayCalendarButton.height
+        visible: false
+    }
+
+    // thong tin khac
+    Others {
+        id: othersTab
+        x: 0
+        y: subMenu.y
+        width: appWidth
+        height: subMenu.height- dayCalendarButton.height
+        visible: false
+    }
+
+
     Row{
+        id: rowOfMainButton
         anchors.bottom: parent.bottom
         height: appHight/10
         width: appWidth
         spacing: 0
         enabled: mouseArea1.enabled
         Button{
-            id: dayCalendar
-            width: parent.width/4
+            id: dayCalendarButton
+            width: parent.width/numberOfTabs
             height: parent.height
             text: "Lịch ngày"
             onClicked: {
-                currentPage = "MainMenu"
+                hideAllTabs();
+                dayCalendarTab.visible= true
+                changeTabByClick.start()
+                currentTab= "dayCalendarTab"
             }
         }
         Button{
-            id: monthCalendar
-            width: parent.width/4
+            id: monthCalendarButton
+            width: parent.width/numberOfTabs
             height: parent.height
             text: "Lịch tháng"
             onClicked: {
-                currentPage = "MonthCalendar"
+                hideAllTabs()
+                monthCalendarTab.visible= true
+                changeTabByClick.start()
+                currentTab= "monthCalendarTab"
             }
         }
         Button{
-            id: daySwitch
-            width: parent.width/4
+            id: daySwitchButton
+            width: parent.width/numberOfTabs
             height: parent.height
             text: "Đổi ngày"
             onClicked: {
-                currentPage = "DaySwitch"
+                hideAllTabs();
+                daySwitchTab.visible= true;
+                changeTabByClick.start()
+                currentTab= "daySwitchTab"
             }
         }
         Button{
-            id: others
-            width: parent.width/4
+            id: worldClockButton
+            width: parent.width/numberOfTabs
+            height: parent.height
+            text: "Giờ quốc tế"
+            onClicked: {
+                hideAllTabs()
+                worldClockTab.visible= true;
+                changeTabByClick.start()
+                currentTab= "worldClockTab"
+            }
+        }
+        Button{
+            id: othersButton
+            width: parent.width/numberOfTabs
             height: parent.height
             text: "Khác"
             onClicked: {
-                currentPage = "Others"
+                hideAllTabs();
+                othersTab.visible= true;
+                changeTabByClick.start()
+                currentTab= "othersTab"
             }
         }
     }
 
-    Rectangle {
+    SubMenu {
         id: subMenu
         x: 0- width
         y: todayButton.height*1.5
         width: appWidth/2.7
         height: appHight- todayButton.height*1.5
-        color: "red"
     }
 
 
@@ -226,10 +261,21 @@ Rectangle {
         id: animationRec
         x: 0-width
         y: subMenu.y
-        opacity: 0.5
+        opacity: 0.35
         width: appWidth
-        height: subMenu.height- dayCalendar.height
-        color: "brown"
+        height: subMenu.height- dayCalendarButton.height
+        color: "black"
+    }
+
+    Rectangle {
+        id: animationRec2
+        x: 0
+        y: Screen.height
+        //y: subMenu.y
+        opacity: 0.35
+        width: appWidth
+        height: subMenu.height- dayCalendarButton.height
+        color: "black"
     }
 
     // animation cua viec chuyen tab
@@ -237,7 +283,7 @@ Rectangle {
         id: changeTabToRightAnimation
         target: animationRec
         property: "x"
-        from: 0
+        from: 0- animationRec.width*0.4
         to: 0 - animationRec.width
         duration: 200
         easing.type: Easing.InOutQuad
@@ -246,8 +292,17 @@ Rectangle {
         id: changeTabToLeftAnimation
         target: animationRec
         property: "x"
-        from: 0
+        from: animationRec.width*0.4
         to: animationRec.width
+        duration: 200
+        easing.type: Easing.InOutQuad
+    }
+    NumberAnimation {
+        id: changeTabByClick
+        target: animationRec2
+        property: "y"
+        from: subMenu.y
+        to: appHight
         duration: 200
         easing.type: Easing.InOutQuad
     }
@@ -293,6 +348,109 @@ Rectangle {
         to: 0
         duration: 300
         easing.type: Easing.InOutQuad
+    }
+
+    function hideAllTabs () {
+        dayCalendarTab.visible= false;
+        monthCalendarTab.visible= false;
+        daySwitchTab.visible= false;
+        worldClockTab.visible= false;
+        othersTab.visible= false;
+    }
+
+    function hideMainMenu () {
+        subMenu.visible= false;
+        hideAllTabs();
+        todayButton.visible= false;
+        subMenuButton.visible= false;
+        rowOfMainButton.visible= false;
+        mouseArea1.visible= false;
+        mouseArea2.visible= false;        
+    }
+
+    function backToMainMenu () {
+        currentPage= "MainMenu"
+        subMenu.visible= true;
+        todayButton.visible= true;
+        subMenuButton.visible= true;
+        rowOfMainButton.visible= true;
+        mouseArea2.visible= true;
+        switch (currentTab) {
+        case "dayCalendarTab":
+            dayCalendarTab.visible= true
+            break;
+        case "monthCalendarTab":
+            monthCalendarTab.visible= true
+            break;
+        case "daySwitchTab":
+            daySwitchTab.visible= true
+            break;
+        case "worldClockTab":
+            worldClockTab.visible= true
+            break;
+        case "othersTab":
+            othersTab.visible= true
+            break;
+        default:
+            return;
+        }
+    }
+
+    function changeTabToRight () {
+        switch (currentTab) {
+        case "dayCalendarTab":
+            hideAllTabs()
+            monthCalendarTab.visible= true
+            currentTab="monthCalendarTab"
+            break;
+        case "monthCalendarTab":
+            hideAllTabs()
+            daySwitchTab.visible= true
+            currentTab = "daySwitchTab"
+            break;
+        case "daySwitchTab":
+            hideAllTabs()
+            worldClockTab.visible= true;
+            currentTab = "worldClockTab"
+            break;
+        case "worldClockTab":
+            hideAllTabs()
+            othersTab.visible= true;
+            currentTab = "othersTab"
+            break;
+        default:
+            return;
+        }
+        changeTabToRightAnimation.start()
+
+    }
+
+    function changeTabToLeft () {
+        switch (currentTab) {
+        case "othersTab":
+            hideAllTabs()
+            worldClockTab.visible= true
+            currentTab= "worldClockTab"
+            break;
+        case "worldClockTab":
+            hideAllTabs()
+            daySwitchTab.visible= true
+            currentTab= "daySwitchTab"
+            break;
+        case "daySwitchTab":
+            hideAllTabs()
+            monthCalendarTab.visible=true
+            currentTab= "monthCalendarTab"
+            break;
+        case "monthCalendarTab":
+            hideAllTabs()
+            dayCalendarTab.visible= true
+            currentTab= "dayCalendarTab";
+            break;
+        default:
+            return;
+        }
+        changeTabToLeftAnimation.start()
     }
 
 }

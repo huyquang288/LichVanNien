@@ -1,8 +1,18 @@
-import QtQuick 2.0
+import QtQuick 2.4
 
-Rectangle {
-    width: 100
-    height: 62
-    color: "black"
+Item {
+    id: monCal
+    signal clicked ()
+    Rectangle {
+        color: "orange"
+        anchors.fill: parent
+        MouseArea {
+            //anchors.fill: parent
+            onClicked: {
+                monCal.clicked ()
+
+            }
+        }
+    }
 }
 
