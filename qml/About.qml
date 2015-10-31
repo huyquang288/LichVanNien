@@ -1,15 +1,21 @@
-import QtQuick 2.0
+import QtQuick 2.4
 
-
-Rectangle {
-    id: aboutPage
-    color: "pink"
-
-    MouseArea {
+Item {
+    id: about
+    signal clicked ()
+    Rectangle {
+        color: "silver"
         anchors.fill: parent
-        onClicked: {
-            backToMainMenu();
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                about.clicked();
+            }
         }
     }
+
 }
+
+
+
 

@@ -14,6 +14,22 @@
         <file>qml/DaySwitch.qml</file>
         <file>qml/WorldClock.qml</file>
         <file>qml/Others.qml</file>
-        <file>qml/SubMenu.qml</file>
+        <file>images/numbers/0.png</file>
+        <file>images/numbers/1.png</file>
+        <file>images/numbers/2.png</file>
+        <file>images/numbers/3.png</file>
+        <file>images/numbers/4.png</file>
+        <file>images/numbers/5.png</file>
+        <file>images/numbers/6.png</file>
+        <file>images/numbers/7.png</file>
+        <file>images/numbers/8.png</file>
+        <file>images/numbers/9.png</file>
+        <file>images/topBanner.png</file>
+        <file>images/dayCalendar.png</file>
+        <file>images/monthCalendar.png</file>
+        <file>images/others.png</file>
+        <file>images/switchDay.png</file>
+        <file>images/zodiac.png</file>
+        <file>qml/Zodiac.qml</file>
     </qresource>
 </RCC>
