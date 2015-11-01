@@ -12,7 +12,6 @@ Rectangle {
     property string currentTab: "dayCalendarTab"
     property double mouseEnteredX: -1
     property int numberOfTabs: 5
-    //property double mouseEnteredY: -1
 
     // Put the name of the QML files containing your pages (without the '.qml')
     property variant pagesList  : [
@@ -21,7 +20,6 @@ Rectangle {
 
 
     // Set this property to another file name to change page
-
     Repeater {
         model: pagesList;
         delegate: Loader {
@@ -59,10 +57,12 @@ Rectangle {
             if (mouseEnteredX- mouseX > appWidth/3) {
                 changeTabToRight()
                 mouseEnteredX= -1;
+                hideRowOfMainButtonEffect();
             }
             else if (mouseX- mouseEnteredX > appWidth/3) {
                 changeTabToLeft();
-                mouseEnteredX= -1;
+                mouseEnteredX= -1;                
+                hideRowOfMainButtonEffect();
             }
         }
     }
@@ -163,11 +163,13 @@ Rectangle {
             width: parent.width/numberOfTabs
             height: parent.height
             source: "/images/dayCalendar.png"
+            opacity: 0.7 //default
             onClicked: {
                 hideAllTabs();
                 dayCalendarTab.visible= true
                 changeTabByClick.start()
                 currentTab= "dayCalendarTab"
+                hideRowOfMainButtonEffect();
             }
         }
         ImageButton {
@@ -180,6 +182,7 @@ Rectangle {
                 monthCalendarTab.visible= true
                 changeTabByClick.start()
                 currentTab= "monthCalendarTab"
+                hideRowOfMainButtonEffect();
             }
         }
         ImageButton {
@@ -192,6 +195,7 @@ Rectangle {
                 daySwitchTab.visible= true;
                 changeTabByClick.start()
                 currentTab= "daySwitchTab"
+                hideRowOfMainButtonEffect();
             }
         }
         ImageButton {
@@ -204,6 +208,7 @@ Rectangle {
                 zodiacTab.visible= true;
                 changeTabByClick.start()
                 currentTab= "zodiacTab"
+                hideRowOfMainButtonEffect();
             }
         }
         ImageButton {
@@ -215,8 +220,34 @@ Rectangle {
                 hideAllTabs();
                 othersTab.visible= true;
                 changeTabByClick.start()
-                currentTab= "othersTab"
+                currentTab= "othersTab"                
+                hideRowOfMainButtonEffect();
             }
+        }
+    }
+
+    function hideRowOfMainButtonEffect() {
+        dayCalendarButton.opacity= 1;
+        monthCalendarButton.opacity= 1;
+        daySwitchButton.opacity= 1;
+        zodiacButton.opacity= 1;
+        othersButton.opacity= 1;
+        switch (currentTab) {
+        case "dayCalendarTab":
+            dayCalendarButton.opacity= 0.7
+            return;
+        case "monthCalendarTab":
+            monthCalendarButton.opacity= 0.7
+            return;
+        case "daySwitchTab":
+            daySwitchButton.opacity= 0.7
+            return
+        case "zodiacTab":
+            zodiacButton.opacity= 0.7
+            return;
+        case "othersTab":
+            othersButton.opacity= 0.7;
+            return;
         }
     }
 
@@ -271,12 +302,6 @@ Rectangle {
         othersTab.visible= false;
     }
 
-    function hideMainMenu () {
-        hideAllTabs();
-        todayButton.visible= false;
-        rowOfMainButton.visible= false;
-        mouseArea1.visible= false;
-    }
 
     function backToMainMenu () {
         currentPage= "MainMenu"
@@ -359,5 +384,7 @@ Rectangle {
         }
         changeTabToLeftAnimation.start()
     }
+
+
 
 }

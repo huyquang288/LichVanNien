@@ -3,9 +3,6 @@
         <file>main.qml</file>
         <file>qml/MainMenu.qml</file>
         <file>qml/ImageButton.qml</file>
-        <file>images/today.png</file>
-        <file>images/submenu.png</file>
-        <file>images/teamImage.jpg</file>
         <file>images/contact.png</file>
         <file>images/about.png</file>
         <file>qml/About.qml</file>
@@ -31,5 +28,6 @@
         <file>images/switchDay.png</file>
         <file>images/zodiac.png</file>
         <file>qml/Zodiac.qml</file>
+        <file>images/background.png</file>
     </qresource>
 </RCC>
