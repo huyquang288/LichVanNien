@@ -76,6 +76,14 @@ Rectangle {
         y: 0
     }
 
+    Image {
+        width: appWidth
+        height: appHight/10
+        source: "/images/bottomBanner.png"
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+    }
+
     // day calendar tab
     DayCalendar {
         id: dayCalendarTab
@@ -96,6 +104,7 @@ Rectangle {
         width: appWidth
         height: appHight*0.9
         visible: false
+
     }
 
     // doi ngay

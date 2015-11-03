@@ -29,5 +29,34 @@
         <file>images/zodiac.png</file>
         <file>qml/Zodiac.qml</file>
         <file>images/background.png</file>
+        <file>images/bottomBanner.png</file>
+        <file>images/square.png</file>
+        <file>qml/js/DayCalendar.js</file>
+        <file>images/12ConGiap/buffalo.png</file>
+        <file>images/12ConGiap/cat.png</file>
+        <file>images/12ConGiap/chick.png</file>
+        <file>images/12ConGiap/dog.png</file>
+        <file>images/12ConGiap/dragon.png</file>
+        <file>images/12ConGiap/goat.png</file>
+        <file>images/12ConGiap/horse.png</file>
+        <file>images/12ConGiap/mice.png</file>
+        <file>images/12ConGiap/monkey.png</file>
+        <file>images/12ConGiap/pig.png</file>
+        <file>images/12ConGiap/snake.png</file>
+        <file>images/12ConGiap/tiger.png</file>
+        <file>images/12ConGiap/cho.png</file>
+        <file>images/12ConGiap/chuot.png</file>
+        <file>images/12ConGiap/de.png</file>
+        <file>images/12ConGiap/ga.png</file>
+        <file>images/12ConGiap/ho.png</file>
+        <file>images/12ConGiap/khi.png</file>
+        <file>images/12ConGiap/lon.png</file>
+        <file>images/12ConGiap/meo.png</file>
+        <file>images/12ConGiap/ngua.png</file>
+        <file>images/12ConGiap/ran.png</file>
+        <file>images/12ConGiap/rong.png</file>
+        <file>images/12ConGiap/trau.png</file>
+        <file>qml/js/ConvertDay.js</file>
+        <file>images/rectange.png</file>
     </qresource>
 </RCC>
