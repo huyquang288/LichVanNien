@@ -4,6 +4,8 @@ Item{
     id: imagebutton
     property string source
     signal clicked()
+    signal released()
+    signal pressed()
 
     Image {
         id: image
@@ -12,9 +14,9 @@ Item{
         MouseArea {
             id: mousebutton
             anchors.fill: parent
-            onClicked: {
-                imagebutton.clicked();
-            }
+            onClicked: imagebutton.clicked();
+            onReleased: imagebutton.released()
+            onPressed: imagebutton.pressed()
         }
         source: imagebutton.source
     }

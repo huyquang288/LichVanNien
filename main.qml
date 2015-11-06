@@ -5,7 +5,7 @@ import "qml"
 
 ApplicationWindow {
     visible: true
-    width: Screen.width
+    width: 470
     height: Screen.height
     property string  currentPage : "main";
     MainMenu{

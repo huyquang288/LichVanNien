@@ -1,3 +1,32 @@
+var lunarDay, lunarMonth, lunarYear;
+var can= new Array(10);
+can[0]= "Giáp";
+can[1]= "Ất";
+can[2]= "Bính";
+can[3]= "Đinh";
+can[4]= "Mậu";
+can[5]= "Kỷ";
+can[6]= "Canh";
+can[7]= "Tân";
+can[8]= "Nhâm";
+can[9]= "Quý";
+
+var chiForText= new Array(12);
+chiForText[0]= "Tý";
+chiForText[1]= "Sửu";
+chiForText[2]= "Dần";
+chiForText[3]= "Mão";
+chiForText[4]= "Thìn";
+chiForText[5]= "Tỵ";
+chiForText[6]= "Ngọ";
+chiForText[7]= "Mùi";
+chiForText[8]= "Thân";
+chiForText[9]= "Dậu";
+chiForText[10]= "Tuất";
+chiForText[11]= "Hợi";
+
+
+
 function jdFromDate(dd, mm, yy) {
     var a, y, m, jd;
     a = Math.floor((14 - mm) / 12);
@@ -137,5 +166,33 @@ function convertSolar2Lunar(dd, mm, yy, timeZone) {
     //console.log(lunarDay +" "+ lunarMonth+" "+ lunarYear+" "+ lunarLeap);
 }
 
+function getLunarFullDate(dd, mm, yy) {
+    convertSolar2Lunar (dd, mm, yy, 0);
+    return lunarDay+"/"+lunarMonth+"/"+lunarYear;
+}
+
+function getLunarDate(dd, mm, yy) {
+    convertSolar2Lunar (dd, mm, yy, 0);
+    return lunarDay
+}
+
+function getLunarMonth () {
+    return lunarMonth
+}
+
+function getLunarYear () {
+    return lunarYear
+}
+
+function getVNeseNameDay (dd, mm, yy) {
+    convertSolar2Lunar (dd, mm, yy, 0);
+    var d= "Ngày "
+    d+= can[Math.floor(jdFromDate(dd, mm, yy) +9.5)%10] +" " +chiForText[Math.floor(jdFromDate(dd, mm, yy) +1.5)%12]
+    d+= " Tháng "
+    d+= can[(lunarYear*12+lunarMonth+3)%10] +" " +chiForText[(lunarMonth+1)%12]
+    d+= " Năm "
+    d+= can[(lunarYear+6)%10] +" " +chiForText[(lunarYear+8)%12]
+    return d;
+}
 
 

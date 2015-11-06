@@ -67,33 +67,14 @@ Rectangle {
         }
     }
 
-    Image {
-        id: topBanner
-        source: "/images/topBanner.png"
-        width: appWidth
-        height: appHight/15
-        x: 0
-        y: 0
-    }
-
-    Image {
-        width: appWidth
-        height: appHight/10
-        source: "/images/bottomBanner.png"
-        anchors.bottom: parent.bottom
-        anchors.left: parent.left
-    }
 
     // day calendar tab
     DayCalendar {
         id: dayCalendarTab
         x: 0
-        y: appHight/15
+        y: 0
         width: appWidth
-        height: appHight*0.9- appHight/15
-        onClicked: {
-            color: "white"
-        }
+        height: appHight*0.9
     }
 
     // month calendar tab
@@ -155,10 +136,19 @@ Rectangle {
         y: Screen.height
         opacity: 0.35
         width: appWidth
-        height: appHight*0.8
+        height: appHight*0.9
         color: "black"
     }
 
+    // background images for bottom menu
+    // it can be deleted after I have good button for bottom menu
+    Image {
+        width: appWidth
+        height: appHight/10
+        source: "/images/rectangle.png"
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+    }
 
     Row{
         id: rowOfMainButton
@@ -180,6 +170,8 @@ Rectangle {
                 currentTab= "dayCalendarTab"
                 hideRowOfMainButtonEffect();
             }
+            onPressed: opacity=0.6
+            onReleased: opacity=1
         }
         ImageButton {
             id: monthCalendarButton
@@ -193,6 +185,8 @@ Rectangle {
                 currentTab= "monthCalendarTab"
                 hideRowOfMainButtonEffect();
             }
+            onPressed: opacity=0.6
+            onReleased: opacity=1
         }
         ImageButton {
             id: daySwitchButton
@@ -206,6 +200,8 @@ Rectangle {
                 currentTab= "daySwitchTab"
                 hideRowOfMainButtonEffect();
             }
+            onPressed: opacity=0.6
+            onReleased: opacity=1
         }
         ImageButton {
             id: zodiacButton
@@ -219,6 +215,8 @@ Rectangle {
                 currentTab= "zodiacTab"
                 hideRowOfMainButtonEffect();
             }
+            onPressed: opacity=0.6
+            onReleased: opacity=1
         }
         ImageButton {
             id: othersButton
@@ -232,6 +230,8 @@ Rectangle {
                 currentTab= "othersTab"                
                 hideRowOfMainButtonEffect();
             }
+            onPressed: opacity=0.6
+            onReleased: opacity=1
         }
     }
 

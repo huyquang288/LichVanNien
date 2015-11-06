@@ -3,8 +3,6 @@
         <file>main.qml</file>
         <file>qml/MainMenu.qml</file>
         <file>qml/ImageButton.qml</file>
-        <file>images/contact.png</file>
-        <file>images/about.png</file>
         <file>qml/About.qml</file>
         <file>qml/DayCalendar.qml</file>
         <file>qml/MonthCalendar.qml</file>
@@ -29,7 +27,6 @@
         <file>images/zodiac.png</file>
         <file>qml/Zodiac.qml</file>
         <file>images/background.png</file>
-        <file>images/bottomBanner.png</file>
         <file>images/square.png</file>
         <file>qml/js/DayCalendar.js</file>
         <file>images/12ConGiap/buffalo.png</file>
@@ -57,6 +54,48 @@
         <file>images/12ConGiap/rong.png</file>
         <file>images/12ConGiap/trau.png</file>
         <file>qml/js/ConvertDay.js</file>
-        <file>images/rectange.png</file>
+        <file>main.cpp</file>
+        <file>images/dayDetail.png</file>
+        <file>images/clock.png</file>
+        <file>qml/js/GetWeather.js</file>
+        <file>images/teamName.png</file>
+        <file>images/today.png</file>
+        <file>images/rectangle.png</file>
+        <file>images/appName.png</file>
+        <file>images/zodiacs/aquarius.png</file>
+        <file>images/zodiacs/aries.png</file>
+        <file>images/zodiacs/cancer.png</file>
+        <file>images/zodiacs/capricorn.png</file>
+        <file>images/zodiacs/gemini.png</file>
+        <file>images/zodiacs/leo.png</file>
+        <file>images/zodiacs/libra.png</file>
+        <file>images/zodiacs/pisces.png</file>
+        <file>images/zodiacs/scorpio.png</file>
+        <file>images/zodiacs/taurus.png</file>
+        <file>images/zodiacs/virgo.png</file>
+        <file>images/zodiacs/aquarius2.png</file>
+        <file>images/zodiacs/aries2.png</file>
+        <file>images/zodiacs/cancer2.png</file>
+        <file>images/zodiacs/capricorn2.png</file>
+        <file>images/zodiacs/gemini2.png</file>
+        <file>images/zodiacs/leo2.png</file>
+        <file>images/zodiacs/libra2.png</file>
+        <file>images/zodiacs/pisces2.png</file>
+        <file>images/zodiacs/scorpio2.png</file>
+        <file>images/zodiacs/taurus2.png</file>
+        <file>images/zodiacs/virgo2.png</file>
+        <file>images/weathers/night.png</file>
+        <file>images/weathers/rainy.png</file>
+        <file>images/weathers/cloudy.png</file>
+        <file>images/weathers/day.png</file>
+        <file>images/weathers/sunnycloudy.png</file>
+        <file>qml/js/Zodiac.js</file>
+        <file>images/zodiacs/sagittarious.png</file>
+        <file>images/zodiacs/sagittarious2.png</file>
+        <file>images/hearts/1.png</file>
+        <file>images/hearts/2.png</file>
+        <file>images/hearts/3.png</file>
+        <file>images/hearts/4.png</file>
+        <file>images/hearts/5.png</file>
     </qresource>
 </RCC>

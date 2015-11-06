@@ -1,5 +1,3 @@
-var lunarDay, lunarMonth, lunarYear;
-
 var weekday = new Array(7);
 weekday[0]=  "Chủ nhật";
 weekday[1] = "Thứ hai";
