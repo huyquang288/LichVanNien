@@ -232,10 +232,11 @@ Item {
             id: idiom
             font.pixelSize: appWidth/28
             text: qsTr("Tại Châu Phi, mỗi buổi sáng thức dậy một con báo biết rằng để tồn tại, nó phải chạy nhanh hơn con hươu chạy chậm nhất");
-            width: appWidth*0.8
+            width: appWidth*0.85
             anchors.top: square.bottom
             anchors.topMargin: date.height/3.5
             x: (appWidth- width)/2
+            horizontalAlignment: Text.AlignHCenter
         }
 
         Rectangle {

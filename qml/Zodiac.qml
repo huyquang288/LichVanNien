@@ -511,6 +511,7 @@ Item {
                 anchors.top: zodiacIcon.bottom
                 anchors.topMargin: focusZodiacDay.height
                 x: (parent.width- width)/2
+                horizontalAlignment: Text.AlignHCenter
             }
             Text {
                 id: t2
