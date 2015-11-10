@@ -172,6 +172,15 @@ function getLunarFullDate(dd, mm, yy) {
 }
 
 function getLunarDate(dd, mm, yy) {
+    if (typeof dd === 'string' || dd instanceof String) {
+        dd= parseInt(dd);
+    }
+    if (typeof mm === 'string' || mm instanceof String) {
+        mm= parseInt(mm);
+    }
+    if (typeof yy === 'string' || yy instanceof String) {
+        yy= parseInt(yy);
+    }
     convertSolar2Lunar (dd, mm, yy, 0);
     return lunarDay
 }
@@ -185,6 +194,15 @@ function getLunarYear () {
 }
 
 function getVNeseNameDay (dd, mm, yy) {
+    if (typeof dd === 'string' || dd instanceof String) {
+        dd= parseInt(dd);
+    }
+    if (typeof mm === 'string' || mm instanceof String) {
+        mm= parseInt(mm);
+    }
+    if (typeof yy === 'string' || yy instanceof String) {
+        yy= parseInt(yy);
+    }
     convertSolar2Lunar (dd, mm, yy, 0);
     var d= "Ngày "
     d+= can[Math.floor(jdFromDate(dd, mm, yy) +9.5)%10] +" " +chiForText[Math.floor(jdFromDate(dd, mm, yy) +1.5)%12]
@@ -192,7 +210,7 @@ function getVNeseNameDay (dd, mm, yy) {
     d+= can[(lunarYear*12+lunarMonth+3)%10] +" " +chiForText[(lunarMonth+1)%12]
     d+= " Năm "
     d+= can[(lunarYear+6)%10] +" " +chiForText[(lunarYear+8)%12]
-    return d;
+    return d;    
 }
 
 

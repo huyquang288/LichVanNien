@@ -104,7 +104,6 @@ Item {
             onClicked: {
                 selectedDay= today
                 changeDay()
-                console.log("click")
             }
             onPressed: opacity=0.6
             onReleased: opacity=1
