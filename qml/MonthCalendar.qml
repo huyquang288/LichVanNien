@@ -16,6 +16,10 @@ Item {
 
             }
         }
+        Image {
+            anchors.fill: parent
+            source: "/images/background.png"
+        }
         Calendar {
             id: calendar
             anchors.top: parent.top

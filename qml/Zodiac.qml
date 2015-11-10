@@ -30,6 +30,10 @@ Item {
     Rectangle {
         color: "orange"
         anchors.fill: parent
+        Image {
+            anchors.fill: parent
+            source: "/images/background.png"
+        }
         MouseArea {
             anchors.fill: parent
             onEntered:  {
@@ -80,6 +84,10 @@ Item {
             width: parent.width*0.8
             anchors.left: parent.left
             anchors.leftMargin: parent.width*0.05
+            Image {
+                anchors.fill: parent
+                source: "/images/rectangle.png"
+            }
             MouseArea {
                 anchors.fill: parent
                 onPressed: parent.opacity= 0.6
@@ -110,7 +118,11 @@ Item {
             height: aquarius.height
             anchors.top: aquarius.bottom
             anchors.topMargin: height/3
-            anchors.left: aquarius.left
+            anchors.left: aquarius.left            
+            Image {
+                anchors.fill: parent
+                source: "/images/rectangle.png"
+            }
             MouseArea {
                 anchors.fill: parent
                 onPressed: parent.opacity= 0.6
@@ -142,6 +154,10 @@ Item {
             anchors.top: pisces.bottom
             anchors.topMargin: height/3
             anchors.left: aquarius.left
+            Image {
+                anchors.fill: parent
+                source: "/images/rectangle.png"
+            }
             MouseArea {
                 anchors.fill: parent
                 onPressed: parent.opacity= 0.6
@@ -173,6 +189,10 @@ Item {
             anchors.top: aries.bottom
             anchors.topMargin: height/3
             anchors.left: aquarius.left
+            Image {
+                anchors.fill: parent
+                source: "/images/rectangle.png"
+            }
             MouseArea {
                 anchors.fill: parent
                 onPressed: parent.opacity= 0.6
@@ -203,7 +223,11 @@ Item {
             height: aquarius.height
             anchors.top: taurus.bottom
             anchors.topMargin: height/3
-            anchors.left: aquarius.left
+            anchors.left: aquarius.left            
+            Image {
+                anchors.fill: parent
+                source: "/images/rectangle.png"
+            }
             MouseArea {
                 anchors.fill: parent
                 onPressed: parent.opacity= 0.6
@@ -235,6 +259,10 @@ Item {
             anchors.top: gemini.bottom
             anchors.topMargin: height/3
             anchors.left: aquarius.left
+            Image {
+                anchors.fill: parent
+                source: "/images/rectangle.png"
+            }
             MouseArea {
                 anchors.fill: parent
                 onPressed: parent.opacity= 0.6
@@ -266,6 +294,10 @@ Item {
             anchors.top: cancer.bottom
             anchors.topMargin: height/3
             anchors.left: aquarius.left
+            Image {
+                anchors.fill: parent
+                source: "/images/rectangle.png"
+            }
             MouseArea {
                 anchors.fill: parent
                 onPressed: parent.opacity= 0.6
@@ -297,6 +329,10 @@ Item {
             anchors.top: leo.bottom
             anchors.topMargin: height/3
             anchors.left: aquarius.left
+            Image {
+                anchors.fill: parent
+                source: "/images/rectangle.png"
+            }
             MouseArea {
                 anchors.fill: parent
                 onPressed: parent.opacity= 0.6
@@ -328,6 +364,10 @@ Item {
             anchors.top: virgo.bottom
             anchors.topMargin: height/3
             anchors.left: aquarius.left
+            Image {
+                anchors.fill: parent
+                source: "/images/rectangle.png"
+            }
             MouseArea {
                 anchors.fill: parent
                 onPressed: parent.opacity= 0.6
@@ -359,6 +399,10 @@ Item {
             anchors.top: libra.bottom
             anchors.topMargin: height/3
             anchors.left: aquarius.left
+            Image {
+                anchors.fill: parent
+                source: "/images/rectangle.png"
+            }
             MouseArea {
                 anchors.fill: parent
                 onPressed: parent.opacity= 0.6
@@ -390,6 +434,10 @@ Item {
             anchors.top: scorpio.bottom
             anchors.topMargin: height/3
             anchors.left: aquarius.left
+            Image {
+                anchors.fill: parent
+                source: "/images/rectangle.png"
+            }
             MouseArea {
                 anchors.fill: parent
                 onPressed: parent.opacity= 0.6
@@ -421,6 +469,10 @@ Item {
             anchors.top: sagittalus.bottom
             anchors.topMargin: height/3
             anchors.left: aquarius.left
+            Image {
+                anchors.fill: parent
+                source: "/images/rectangle.png"
+            }
             MouseArea {
                 anchors.fill: parent
                 onPressed: parent.opacity= 0.6

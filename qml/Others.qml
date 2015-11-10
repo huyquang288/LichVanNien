@@ -13,6 +13,11 @@ Item {
 
             }
         }
+
+        Image {
+            anchors.fill: parent
+            source: "/images/background.png"
+        }
     }
 }
 

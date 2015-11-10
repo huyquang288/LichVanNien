@@ -97,5 +97,6 @@
         <file>images/hearts/3.png</file>
         <file>images/hearts/4.png</file>
         <file>images/hearts/5.png</file>
+        <file>images/confirmSwap.png</file>
     </qresource>
 </RCC>

@@ -158,6 +158,7 @@ Item {
             Image {
                 source: "/images/square.png"
                 anchors.fill: parent
+                opacity: 1
             }
 
             // anh nam am lich
