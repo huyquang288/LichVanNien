@@ -76,6 +76,15 @@ Item {
             anchors.rightMargin: width/2
         }
 
+        Image {
+            x: solarYear.x- solarYear.width/3
+            y: solarYear.y- solarYear.height/2
+            height: solarYear.height*2
+            width: parent.width*0.8 +solarYear.width/3*2
+            source: "/images/rectangle.png"
+            opacity: 0.85
+        }
+
 
         // list of sun combo box
         ComboBox {
@@ -150,7 +159,7 @@ Item {
             y: solarYear.y
             x: solarYear.x*3+ solarYear.width*2
             model: ["Day", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
-            visible: (mode=='sun' && solarMonth.currentIndex==0) ?true :((solarMonth.currentText==1 || solarMonth.currentText==3 || solarMonth.currentText==5 || solarMonth.currentText==7 || solarMonth.currentText==8 || solarMonth.currentText==10 || solarMonth.currentText==12) ?true :false);
+            visible: (mode=='sun' && solarMonth.currentIndex==0) ?true :((mode=='sun' && (solarMonth.currentText==1 || solarMonth.currentText==3 || solarMonth.currentText==5 || solarMonth.currentText==7 || solarMonth.currentText==8 || solarMonth.currentText==10 || solarMonth.currentText==12)) ?true :false);
             enabled: (mode=='sun' && solarMonth.currentIndex==0) ?false :((solarMonth.currentText==1 || solarMonth.currentText==3 || solarMonth.currentText==5 || solarMonth.currentText==7 || solarMonth.currentText==8 || solarMonth.currentText==10 || solarMonth.currentText==12) ?true :false);
             onCurrentIndexChanged: {
                 if (solarYear.currentIndex!=0 && solarMonth.currentIndex !=0) {
