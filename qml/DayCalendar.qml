@@ -46,12 +46,19 @@ Item {
 
     // su dung de update thoi gian lien tuc moi 30s
     Timer {
-        interval: 5000
+        interval: 60000
         running: true
         repeat: true
         onTriggered: {
-            GW.getWeather()
             currentTime= new Date();
+        }
+    }
+
+    Timer {
+        interval: 7500
+        running: true
+        onTriggered: {
+            GW.getWeather()
             if (weather.indexOf('Cloudy')!=-1) {
                 if (weather.indexOf('Mostly')!=-1 || (currentTime.getHours()<6 || currentTime.getHours()>18)) {
                     weatherImageSource= "/images/weathers/cloudy.png"
