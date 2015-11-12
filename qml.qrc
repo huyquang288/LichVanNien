@@ -98,5 +98,9 @@
         <file>images/hearts/4.png</file>
         <file>images/hearts/5.png</file>
         <file>images/confirmSwap.png</file>
+        <file>images/moon.png</file>
+        <file>images/sun.png</file>
+        <file>images/to.png</file>
+        <file>images/swap.png</file>
     </qresource>
 </RCC>

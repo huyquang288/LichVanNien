@@ -543,6 +543,7 @@ Item {
                 anchors.topMargin: height/2
                 text: dayOfZodiac
                 x: (parent.width- width)/2
+                color: "#070777"
             }
             Image {
                 id: zodiacIcon

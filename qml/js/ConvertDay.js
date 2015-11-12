@@ -1,5 +1,7 @@
 var lunarDay, lunarMonth, lunarYear;
 var can= new Array(10);
+
+var solarDayNumber, solarMonthNumber, solarYearNumber;
 can[0]= "Giáp";
 can[1]= "Ất";
 can[2]= "Bính";
@@ -55,6 +57,9 @@ function jdToDate(jd) {
     day = e - Math.floor((153*m+2)/5) + 1;
     month = m + 3 - 12*Math.floor(m/10);
     year = b*100 + d - 4800 + Math.floor(m/10);
+    solarDayNumber= day;
+    solarMonthNumber= month;
+    solarYearNumber= year;
     return new Array(day, month, year);
 }
 
@@ -166,8 +171,53 @@ function convertSolar2Lunar(dd, mm, yy, timeZone) {
     //console.log(lunarDay +" "+ lunarMonth+" "+ lunarYear+" "+ lunarLeap);
 }
 
+function convertLunar2Solar(lunarDay, lunarMonth, lunarYear, lunarLeap, timeZone) {
+    if (typeof lunarDay === 'string' || lunarDay instanceof String) {
+        lunarDay= parseInt(lunarDay);
+    }
+    if (typeof lunarMonth === 'string' || lunarMonth instanceof String) {
+        lunarMonth= parseInt(lunarMonth);
+    }
+    if (typeof lunarYear === 'string' || lunarYear instanceof String) {
+        lunarYear= parseInt(lunarYear);
+    }
+
+
+    var k, a11, b11, off, leapOff, leapMonth, monthStart;
+    if (lunarMonth < 11) {
+        a11 = getLunarMonth11(lunarYear-1, timeZone);
+        b11 = getLunarMonth11(lunarYear, timeZone);
+    } else {
+        a11 = getLunarMonth11(lunarYear, timeZone);
+        b11 = getLunarMonth11(lunarYear+1, timeZone);
+    }
+    off = lunarMonth - 11;
+    if (off < 0) {
+        off += 12;
+    }
+    if (b11 - a11 > 365) {
+        leapOff = getLeapMonthOffset(a11, timeZone);
+        leapMonth = leapOff - 2;
+        if (leapMonth < 0) {
+            leapMonth += 12;
+        }
+        if (lunarLeap != 0 && lunarMonth != leapMonth) {
+            return new Array(0, 0, 0);
+        } else if (lunarLeap != 0 || off >= leapOff) {
+            off += 1;
+        }
+    }
+    k = Math.floor(0.5 + (a11 - 2415021.076998695) / 29.530588853);
+    monthStart = getNewMoonDay(k+off, timeZone);
+    return jdToDate(monthStart+lunarDay-1);
+
+}
+
+
+
+
 function getLunarFullDate(dd, mm, yy) {
-    convertSolar2Lunar (dd, mm, yy, 0);
+    convertSolar2Lunar (dd, mm, yy, 7);
     return lunarDay+"/"+lunarMonth+"/"+lunarYear;
 }
 
