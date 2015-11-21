@@ -93,7 +93,7 @@ Item {
             anchors.top: fromImage.bottom
             anchors.topMargin: fromImage.height/1.5
             x: parent.width/10
-            model: ["Year", 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019];
+            model: ["Năm", 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019];
             visible: (mode=='sun') ?true :false
             onCurrentIndexChanged: {
                 if (solarYear.currentIndex!=0 && solarMonth.currentIndex !=0) {
@@ -125,7 +125,7 @@ Item {
             width: parent.width/5
             y: solarYear.y
             x: solarYear.x*2+ solarYear.width
-            model: ["Month", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+            model: ["Tháng", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
             visible: (mode=='sun') ?true :false
             enabled: (solarYear.currentIndex!=0) ?true :false
             onCurrentIndexChanged: {
@@ -158,7 +158,7 @@ Item {
             width: parent.width/5
             y: solarYear.y
             x: solarYear.x*3+ solarYear.width*2
-            model: ["Day", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
+            model: ["Ngày", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
             visible: (mode=='sun' && solarMonth.currentIndex==0) ?true :((mode=='sun' && (solarMonth.currentText==1 || solarMonth.currentText==3 || solarMonth.currentText==5 || solarMonth.currentText==7 || solarMonth.currentText==8 || solarMonth.currentText==10 || solarMonth.currentText==12)) ?true :false);
             enabled: (mode=='sun' && solarMonth.currentIndex==0) ?false :((solarMonth.currentText==1 || solarMonth.currentText==3 || solarMonth.currentText==5 || solarMonth.currentText==7 || solarMonth.currentText==8 || solarMonth.currentText==10 || solarMonth.currentText==12) ?true :false);
             onCurrentIndexChanged: {
@@ -177,7 +177,7 @@ Item {
             width: parent.width/5
             y: solarYear.y
             x: solarYear.x*3+ solarYear.width*2
-            model: ["Day", 1, 2, 3, 4, 5 , 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
+            model: ["Ngày", 1, 2, 3, 4, 5 , 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
             visible: (mode=='sun' && (solarMonth.currentText==4 || solarMonth.currentText==6 || solarMonth.currentText==9 || solarMonth.currentText==11)) ?true :false
             onCurrentIndexChanged: {
                 if (solarYear.currentIndex!=0 && solarMonth.currentIndex !=0) {
@@ -195,7 +195,7 @@ Item {
             width: parent.width/5
             y: solarYear.y
             x: solarYear.x*3+ solarYear.width*2
-            model: ["Day", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28];
+            model: ["Ngày", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28];
             visible: (mode=='sun' && solarMonth.currentText== 2 && solarYear.currentText%4!=0) ?true :false
             onCurrentIndexChanged: {
                 if (solarYear.currentIndex!=0 && solarMonth.currentIndex !=0) {
@@ -213,7 +213,7 @@ Item {
             width: parent.width/5
             y: solarYear.y
             x: solarYear.x*3+ solarYear.width*2
-            model: ["Day", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29];
+            model: ["Ngày", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29];
             visible: (mode=='sun' && solarMonth.currentText== 2 && solarYear.currentText%4==0) ?true :false
             onCurrentIndexChanged: {
                 if (solarYear.currentIndex!=0 && solarMonth.currentIndex !=0) {
@@ -232,7 +232,7 @@ Item {
             width: solarYear.width
             x: solarYear.x
             y: solarYear.y
-            model: ["Year", 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019];
+            model: ["Năm", 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019];
             visible: (mode=='moon') ?true :false
             onCurrentIndexChanged: {
                 if (lunarYear.currentIndex!=0 && lunarMonth.currentIndex!=0 && lunarDay.currentIndex!=0) {
@@ -250,7 +250,7 @@ Item {
             width: solarMonth.width
             y: solarMonth.y
             x: solarMonth.x
-            model: ["Month", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+            model: ["Tháng", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
             visible: (mode=='moon') ?true :false
             enabled: (lunarYear.currentIndex!=0) ?true :false
             onCurrentIndexChanged: {
@@ -269,7 +269,7 @@ Item {
             width: solarDay1.width
             y: solarDay1.y
             x: solarDay1.x
-            model: ["Day", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
+            model: ["Ngày", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
             visible: (mode=='moon') ?true :false
             enabled: (mode=='moon' && lunarMonth.currentIndex==0) ?false :true
             onCurrentIndexChanged: {
