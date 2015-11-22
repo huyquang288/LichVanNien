@@ -102,5 +102,15 @@
         <file>images/sun.png</file>
         <file>images/to.png</file>
         <file>images/swap.png</file>
+        <file>qml/content/arrow.png</file>
+        <file>qml/content/background.png</file>
+        <file>qml/content/center.png</file>
+        <file>qml/content/clock.png</file>
+        <file>qml/content/Clock.qml</file>
+        <file>qml/content/clock-night.png</file>
+        <file>qml/content/hour.png</file>
+        <file>qml/content/minute.png</file>
+        <file>qml/content/quit.png</file>
+        <file>qml/content/second.png</file>
     </qresource>
 </RCC>
