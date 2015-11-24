@@ -3,19 +3,284 @@ import "content" as Content
 
 Item {
     id: oth
-    Rectangle {
-        color: "skyblue"
+    Rectangle {        
         anchors.fill: parent
+        Image {
+            anchors.fill: parent
+            source: "/images/background.png"
+        }
         MouseArea {
-            //anchors.fill: parent
+            anchors.fill: parent
+            onEntered:  {
+                mouseEnteredX= mouseX
+            }
+            onReleased: {
+                if (Math.abs(mouseEnteredX- mouseX) <10) {
+                    hideAllRectangle();
+                }
+                else if (mouseEnteredX- mouseX > appWidth/3) {
+                    changeTabToRight()
+                    mouseEnteredX= -1;
+                    hideRowOfMainButtonEffect();
+                }
+                else if (mouseX- mouseEnteredX > appWidth/3) {
+                    changeTabToLeft();
+                    mouseEnteredX= -1;
+                    hideRowOfMainButtonEffect();
+                }
+            }
+        }
+
+        ImageButton {
+            id: clockButton
+            width: parent.width*0.7
+            height: parent.height/7.5
+            y: height
+            x: (parent.width- width)/2
+            source: "/images/worldClock.png"
+            onPressed: opacity=0.6
+            onReleased: opacity=1
             onClicked: {
+                hideAllRectangle()
+                worldClocks.visible= true
+                showWorldClocks.start()
+
+            }
+        }
+        ImageButton {
+            id: weatherButton
+            x: clockButton.x
+            y: clockButton.y+height*1.5
+            width: clockButton.width
+            height: clockButton.height
+            source: "/images/weather.png"
+            onPressed: opacity=0.6
+            onReleased: opacity=1
+            onClicked: {
+                hideAllRectangle();
+                nextDaysWeather.visible= true
+                showWeather.start()
+
+            }
+        }
+        ImageButton {
+            id: contactButton
+            x: clockButton.x
+            y: weatherButton.y + height*1.5
+            width: clockButton.width
+            height: clockButton.height
+            source: "/images/contact.png"
+            onPressed: opacity=0.6
+            onReleased: opacity=1
+            onClicked: {
+                hideAllRectangle();
+                teamAbout.visible=true
+                showTeamAbout.start()
+
+            }
+        }
+        ImageButton {
+            id: aboutButton
+            x: clockButton.x
+            y: contactButton.y +height*1.5
+            width: clockButton.width
+            height: clockButton.height
+            source: "/images/about.png"
+            onPressed: opacity=0.6
+            onReleased: opacity=1
+            onClicked: {
+                hideAllRectangle();
+                appAbout.visible=true
+                showAppAbout.start()
 
             }
         }
 
-        Image {
-            anchors.fill: parent
-            source: "/images/background.png"
+        Rectangle {
+            id: nextDaysWeather
+            width: worldClocks.width
+            height: worldClocks.height
+            anchors.top: worldClocks.top
+            anchors.left: worldClocks.left
+            visible: false
+            Image {
+                source: "/images/rectangle.png"
+                anchors.fill: parent
+            }
+            Text {
+                id: name2
+                text: "Weather"
+                font.pixelSize: parent.width/12
+                anchors.top: parent.top
+                anchors.topMargin: height/3*2
+                x: (parent.width- width)/2
+            }
+        }
+
+        Rectangle {
+            id: appAbout
+            width: worldClocks.width
+            height: worldClocks.height
+            anchors.top: worldClocks.top
+            anchors.left: worldClocks.left
+            visible: false
+            Image {
+                source: "/images/rectangle.png"
+                anchors.fill: parent
+            }
+            Text {
+                id: name3
+                text: "About"
+                font.pixelSize: parent.width/12
+                anchors.top: parent.top
+                anchors.topMargin: height/3*2
+                x: (parent.width- width)/2
+            }
+            Text {
+                wrapMode: Text.Wrap
+                color: "#070777"
+                id: aboutText
+                font.pixelSize: appWidth/28
+                text: qsTr("Ứng dụng lịch vạn niên được viết bởi nhóm NoName là ứng dụng lịch của người trẻ, ứng dụng được tạo ra với mong muống phục vụ nhu cầu tra cứu ngày tháng, cập nhật thời tiết, giờ tại các quốc gia trên thế giới.");
+                width: parent.width*0.85
+                anchors.top: name3.bottom
+                anchors.topMargin: name3.height*0.75
+                x: (parent.width- width)/2
+                horizontalAlignment: Text.AlignHCenter
+            }
+
+        }
+
+        Rectangle {
+            id: teamAbout
+            width: worldClocks.width
+            height: worldClocks.height
+            anchors.top: worldClocks.top
+            anchors.left: worldClocks.left
+            visible: false
+            Image {
+                source: "/images/rectangle.png"
+                anchors.fill: parent
+            }
+            Text {
+                id: name4
+                text: "Contact"
+                font.pixelSize: parent.width/12
+                anchors.top: parent.top
+                anchors.topMargin: height/3*2
+                x: (parent.width- width)/2
+            }
+
+            Image {
+                id: img1
+                x: parent.width/10
+                y: name4.y + name4.height*2
+                width: parent.width/5
+                height: width
+
+                source: "/images/huy.png"
+            }
+            Text {
+                id: nam1
+                text: qsTr("Trần Quang Huy")
+                anchors.left: img1.right
+                anchors.leftMargin: parent.width/10
+                anchors.top: img1.top
+            }
+            Text {
+                id: ema1
+                text: qsTr("Email:")
+                anchors.left: nam1.left
+                anchors.bottom: img1.bottom
+            }
+
+            Image {
+                id: img2
+                x: img1.x
+                width: img1.width
+                height: width
+                source: "/images/hung.png"
+                anchors.top: img1.bottom
+                anchors.topMargin: width/4
+            }
+            Text {
+                id: nam2
+                anchors.left: nam1.left
+                text: qsTr("Nguyễn Huy Hưng")
+                anchors.top: img2.top
+            }
+            Text {
+                id: ema2
+                anchors.left: nam1.left
+                text: qsTr("Email:")
+                anchors.bottom: img2.bottom
+            }
+
+            Image {
+                id: img3
+                x: img1.x
+                width: img1.width
+                height: width
+                source: "/images/hoan.png"
+                anchors.top: img2.bottom
+                anchors.topMargin: width/4
+            }
+            Text {
+                id: nam3
+                anchors.left: nam1.left
+                text: qsTr("Trần Văn Hoàn")
+                anchors.top: img3.top
+            }
+            Text {
+                id: ema3
+                anchors.left: nam1.left
+                text: qsTr("Email:")
+                anchors.bottom: img3.bottom
+            }
+
+            Image {
+                id: img4
+                x: img1.x
+                width: img1.width
+                height: width
+                source: "/images/phuc.png"
+                anchors.top: img3.bottom
+                anchors.topMargin: width/4
+            }
+            Text {
+                id: nam4
+                anchors.left: nam1.left
+                text: qsTr("Đỗ Hoàng Phúc")
+                anchors.top: img4.top
+            }
+            Text {
+                id: ema4
+                anchors.left: nam1.left
+                text: qsTr("Email:")
+                anchors.bottom: img4.bottom
+            }
+
+            Image {
+                id: img5
+                x: img1.x
+                width: img1.width
+                height: width
+                source: "/images/trang.png"
+                anchors.top: img4.bottom
+                anchors.topMargin: width/4
+            }
+            Text {
+                id: nam5
+                anchors.left: nam1.left
+                text: qsTr("Quách Thị Như Trang")
+                anchors.top: img5.top
+            }
+            Text {
+                id: ema5
+                anchors.left: nam1.left
+                text: qsTr("Email:")
+                anchors.bottom: img5.bottom
+            }
         }
 
         Rectangle {
@@ -26,7 +291,7 @@ Item {
             anchors.topMargin: (parent.height- height)/2
             anchors.left: parent.left
             anchors.leftMargin: parent.width*0.05
-            visible: true
+            visible: false
             Image {
                 source: "/images/rectangle.png"
                 anchors.fill: parent
@@ -40,64 +305,87 @@ Item {
                 x: (parent.width- width)/2
             }
 
-
-            Rectangle {
+            Content.Clock {
                 id: clo1
-                width: parent.width/3
-                height: width
+                scale: (parent.width/2.5)/width
                 anchors.top: name1.bottom
-                anchors.topMargin: (parent.height- cc.height*2- name1.height)/2.05
+                anchors.topMargin: (parent.height- ((height*2- name1.height))*scale)/2.75
                 anchors.left: parent.left
-                anchors.leftMargin: width/3
-                Content.Clock {
-                    id: cc
-                    scale: (width>parent.width) ?(parent.width/width) :(width/parent.width)
-                    anchors.centerIn: parent
-                    city: "New York"; shift: -4
-                }
+                anchors.leftMargin: (parent.width*0.2/3)*scale
+                city: "New York"; shift: -4
             }
-            Rectangle {
+            Content.Clock {
                 id: clo2
-                width: parent.width/3
-                height: width
                 anchors.top: clo1.top
-                anchors.left: clo1.right
-                anchors.leftMargin: width/3
-                Content.Clock {
-                    scale: (width>parent.width) ?(parent.width/width) :(width/parent.width)
-                    anchors.centerIn: parent
-                    city: "London"; shift: 0
-                }
+                anchors.right: parent.right
+                anchors.rightMargin: (parent.width*0.2/3)*scale
+                scale: clo1.scale
+                city: "London"; shift: 0
             }
-            Rectangle {
+            Content.Clock {
                 id: clo3
-                width: parent.width/3
-                height: width
                 anchors.top: clo1.bottom
-                anchors.topMargin: name1.height
-                anchors.left: parent.left
-                anchors.leftMargin: width/3
-                Content.Clock {
-                    scale: (width>parent.width) ?(parent.width/width) :(width/parent.width)
-                    anchors.centerIn: parent
-                    city: "Mumbai"; shift: 5.5
-                }
+                anchors.topMargin: name1.height*scale*1.2
+                anchors.left: clo1.left
+                scale: clo1.scale
+                city: "Mumbai"; shift: 5.5
             }
-            Rectangle {
+            Content.Clock {
                 id: clo4
-                width: parent.width/3
-                height: width
                 anchors.top: clo3.top
-                anchors.left: clo3.right
-                anchors.leftMargin: width/3
-                Content.Clock {
-                    scale: (width>parent.width) ?(parent.width/width) :(width/parent.width)
-                    anchors.centerIn: parent
-                    city: "Tokyo"; shift: 9
-                }
+                anchors.right: clo2.right
+                scale: clo1.scale
+                city: "Tokyo"; shift: 9
             }
         }
 
+
+        NumberAnimation {
+            id: showWorldClocks
+            target: worldClocks
+            property: "opacity"
+            duration: 350
+            easing.type: Easing.InOutQuad
+            from: 0
+            to: 1
+        }
+        NumberAnimation {
+            id: showWeather
+            target: nextDaysWeather
+            property: "opacity"
+            duration: 350
+            easing.type: Easing.InOutQuad
+            from: 0
+            to: 1
+        }
+        NumberAnimation {
+            id: showTeamAbout
+            target: teamAbout
+            property: "opacity"
+            duration: 350
+            easing.type: Easing.InOutQuad
+            from: 0
+            to: 1
+        }
+        NumberAnimation {
+            id: showAppAbout
+            target: appAbout
+            property: "opacity"
+            duration: 350
+            easing.type: Easing.InOutQuad
+            from: 0
+            to: 1
+        }
+
+
+
+    }
+
+    function hideAllRectangle() {
+        appAbout.visible= false
+        teamAbout.visible= false
+        worldClocks.visible= false
+        nextDaysWeather.visible= false
     }
 }
 

@@ -130,9 +130,9 @@ Item {
 
         Text {
             id: cityLabel
-            y: 210; anchors.horizontalCenter: parent.horizontalCenter
+            y: 195; anchors.horizontalCenter: parent.horizontalCenter
             color: "#070777"
-            font.pixelSize: appWidth/26
+            font.pixelSize: appWidth/47
         }
     }
 }

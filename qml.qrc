@@ -112,5 +112,14 @@
         <file>qml/content/minute.png</file>
         <file>qml/content/quit.png</file>
         <file>qml/content/second.png</file>
+        <file>images/about.png</file>
+        <file>images/contact.png</file>
+        <file>images/weather.png</file>
+        <file>images/worldClock.png</file>
+        <file>images/trang.png</file>
+        <file>images/huy.png</file>
+        <file>images/hoan.png</file>
+        <file>images/hung.png</file>
+        <file>images/phuc.png</file>
     </qresource>
 </RCC>

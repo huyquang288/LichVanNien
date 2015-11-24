@@ -28,7 +28,6 @@ Item {
     property string moneyHeartsSource: ""
 
     Rectangle {
-        color: "orange"
         anchors.fill: parent
         Image {
             anchors.fill: parent
