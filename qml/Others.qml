@@ -174,24 +174,28 @@ Item {
             Image {
                 id: img1
                 x: parent.width/10
-                y: name4.y + name4.height*2
-                width: parent.width/5
+                y: name4.y + name4.height*1.5
+                width: (parent.height- name4.y- name4.height*0.5)/7
                 height: width
-
                 source: "/images/huy.png"
             }
             Text {
+                font.pixelSize: aboutText.font.pixelSize
                 id: nam1
                 text: qsTr("Trần Quang Huy")
                 anchors.left: img1.right
                 anchors.leftMargin: parent.width/10
                 anchors.top: img1.top
+                color: "#070777"
             }
             Text {
                 id: ema1
                 text: qsTr("Email:")
                 anchors.left: nam1.left
-                anchors.bottom: img1.bottom
+                anchors.top: nam1.bottom
+                anchors.topMargin: nam1.height*0.75
+                font.pixelSize: aboutText.font.pixelSize
+                color: "#070777"
             }
 
             Image {
@@ -205,15 +209,20 @@ Item {
             }
             Text {
                 id: nam2
+                font.pixelSize: aboutText.font.pixelSize
                 anchors.left: nam1.left
                 text: qsTr("Nguyễn Huy Hưng")
+                color: "#070777"
                 anchors.top: img2.top
             }
             Text {
                 id: ema2
                 anchors.left: nam1.left
                 text: qsTr("Email:")
-                anchors.bottom: img2.bottom
+                anchors.top: nam2.bottom
+                anchors.topMargin: nam2.height*0.75
+                color: "#070777"
+                font.pixelSize: aboutText.font.pixelSize
             }
 
             Image {
@@ -230,12 +239,17 @@ Item {
                 anchors.left: nam1.left
                 text: qsTr("Trần Văn Hoàn")
                 anchors.top: img3.top
+                color: "#070777"
+                font.pixelSize: aboutText.font.pixelSize
             }
             Text {
                 id: ema3
                 anchors.left: nam1.left
                 text: qsTr("Email:")
-                anchors.bottom: img3.bottom
+                color: "#070777"
+                anchors.top: nam3.bottom
+                anchors.topMargin: nam3.height*0.75
+                font.pixelSize: aboutText.font.pixelSize
             }
 
             Image {
@@ -252,12 +266,17 @@ Item {
                 anchors.left: nam1.left
                 text: qsTr("Đỗ Hoàng Phúc")
                 anchors.top: img4.top
+                color: "#070777"
+                font.pixelSize: aboutText.font.pixelSize
             }
             Text {
                 id: ema4
                 anchors.left: nam1.left
+                color: "#070777"
+                font.pixelSize: aboutText.font.pixelSize
                 text: qsTr("Email:")
-                anchors.bottom: img4.bottom
+                anchors.top: nam4.bottom
+                anchors.topMargin: nam4.height*0.75
             }
 
             Image {
@@ -270,16 +289,21 @@ Item {
                 anchors.topMargin: width/4
             }
             Text {
+                font.pixelSize: aboutText.font.pixelSize
                 id: nam5
                 anchors.left: nam1.left
                 text: qsTr("Quách Thị Như Trang")
+                color: "#070777"
                 anchors.top: img5.top
             }
             Text {
                 id: ema5
                 anchors.left: nam1.left
+                font.pixelSize: aboutText.font.pixelSize
                 text: qsTr("Email:")
-                anchors.bottom: img5.bottom
+                anchors.top: nam5.bottom
+                anchors.topMargin: nam5.height*0.75
+                color: "#070777"
             }
         }
 
