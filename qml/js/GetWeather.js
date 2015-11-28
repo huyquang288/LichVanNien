@@ -6,8 +6,15 @@ function getWeather() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var response = JSON.parse(xmlhttp.responseText);            
             temperature= Math.round((response.query.results.channel.item.condition.temp-32)/1.8)
-            weather= response.query.results.channel.item.condition.text
-            //console.log(weather);
+            var weatherSource= response.query.results.channel.item.description
+            var begin= weatherSource.indexOf('http://')
+            var end= weatherSource.indexOf('.gif')
+            weatherImageSource= weatherSource.substring(begin, end+4)
+
+            t1Text= response.query.results.channel.item.forecast[1].day +", "
+            t1Text+= response.query.results.channel.item.forecast[1].date +"\n"
+            t1Text+= response.query.results.channel.item.forecast[1].text +"  "
+            t1Text+= Math.round(response.query.results.channel.item.forecast[1].low-32)/1.8 +"~" +Math.round(response.query.results.channel.item.forecast[1].high-32)/1.8
         }
     }
     xmlhttp.open("GET", url, true);

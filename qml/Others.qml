@@ -1,10 +1,18 @@
 import QtQuick 2.4
 import "content" as Content
+import "js/GetWeather.js" as GW
 
 Item {
     id: oth
+
+    property string t1Text
+    property string t2Text
+    property string t3Text
+    property string t4Text
+
     Rectangle {        
         anchors.fill: parent
+
         Image {
             anchors.fill: parent
             source: "/images/background.png"
@@ -44,7 +52,6 @@ Item {
                 hideAllRectangle()
                 worldClocks.visible= true
                 showWorldClocks.start()
-
             }
         }
         ImageButton {
@@ -57,10 +64,10 @@ Item {
             onPressed: opacity=0.6
             onReleased: opacity=1
             onClicked: {
+                getWeather()
                 hideAllRectangle();
                 nextDaysWeather.visible= true
                 showWeather.start()
-
             }
         }
         ImageButton {
@@ -76,7 +83,6 @@ Item {
                 hideAllRectangle();
                 teamAbout.visible=true
                 showTeamAbout.start()
-
             }
         }
         ImageButton {
@@ -92,7 +98,6 @@ Item {
                 hideAllRectangle();
                 appAbout.visible=true
                 showAppAbout.start()
-
             }
         }
 
@@ -115,6 +120,105 @@ Item {
                 anchors.topMargin: height/3*2
                 x: (parent.width- width)/2
             }
+
+
+            Rectangle {
+                id: r1
+                height: (parent.height- name2.y- name2.height*1.5)/4
+                width: parent.width*0.8
+                x: parent.width*0.1
+                anchors.top: name2.bottom
+                anchors.topMargin: name2.height/10
+                Image {
+                    height: t1.height*1.25
+                    width: parent.width
+                    y: t1.y- t1.height*0.125
+                    source: "/images/rectangle.png"
+                }
+                Text {
+                    id: t1
+                    text: t1Text
+                    anchors.left: parent.left
+                    anchors.leftMargin: parent.width*0.075
+                    anchors.top: parent.top
+                    anchors.topMargin: (parent.height- height)/2
+                    color: "#070777"
+                    font.pixelSize: appWidth/28
+                }
+            }
+
+            Rectangle {
+                id: r2
+                height: r1.height
+                width: r1.width
+                anchors.top: r1.bottom
+                anchors.left: r1.left
+                Image {
+                    height: t2.height*1.25
+                    width: parent.width
+                    y: t2.y- t2.height*0.125
+                    source: "/images/rectangle.png"
+                }
+                Text {
+                    id: t2
+                    text: t2Text
+                    anchors.left: parent.left
+                    anchors.leftMargin: parent.width*0.075
+                    anchors.top: parent.top
+                    anchors.topMargin: (parent.height- height)/2
+                    color: "#070777"
+                    font.pixelSize: appWidth/28
+                }
+            }
+
+            Rectangle {
+                id: r3
+                height: r1.height
+                width: r1.width
+                anchors.top: r2.bottom
+                anchors.left: r1.left
+                Image {
+                    height: t3.height*1.25
+                    width: parent.width
+                    y: t3.y- t3.height*0.125
+                    source: "/images/rectangle.png"
+                }
+                Text {
+                    id: t3
+                    text: t3Text
+                    anchors.left: parent.left
+                    anchors.leftMargin: parent.width*0.075
+                    anchors.top: parent.top
+                    anchors.topMargin: (parent.height- height)/2
+                    color: "#070777"
+                    font.pixelSize: appWidth/28
+                }
+            }
+
+            Rectangle {
+                id: r4
+                height: r1.height
+                width: r1.width
+                anchors.top: r3.bottom
+                anchors.left: r1.left
+                Image {
+                    height: t4.height*1.25
+                    width: parent.width
+                    y: t4.y- t4.height*0.125
+                    source: "/images/rectangle.png"
+                }
+                Text {
+                    id: t4
+                    text: t4Text
+                    anchors.left: parent.left
+                    anchors.leftMargin: parent.width*0.075
+                    anchors.top: parent.top
+                    anchors.topMargin: (parent.height- height)/2
+                    color: "#070777"
+                    font.pixelSize: appWidth/28
+                }
+            }
+
         }
 
         Rectangle {
@@ -401,8 +505,6 @@ Item {
             to: 1
         }
 
-
-
     }
 
     function hideAllRectangle() {
@@ -411,5 +513,39 @@ Item {
         worldClocks.visible= false
         nextDaysWeather.visible= false
     }
+
+    function getWeather() {
+        var xmlhttp = new XMLHttpRequest();
+        var url = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20%3D%2091888417&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+
+        xmlhttp.onreadystatechange=function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                var response = JSON.parse(xmlhttp.responseText);
+
+                t1Text= response.query.results.channel.item.forecast[1].day +", "
+                t1Text+= response.query.results.channel.item.forecast[1].date +"\n"
+                t1Text+= response.query.results.channel.item.forecast[1].text +":  "
+                t1Text+= Math.round((response.query.results.channel.item.forecast[1].low-32)/1.8) +"~" +Math.round((response.query.results.channel.item.forecast[1].high-32)/1.8) +"°C";
+
+                t2Text= response.query.results.channel.item.forecast[2].day +", "
+                t2Text+= response.query.results.channel.item.forecast[2].date +"\n"
+                t2Text+= response.query.results.channel.item.forecast[2].text +":  "
+                t2Text+= Math.round((response.query.results.channel.item.forecast[2].low-32)/1.8) +"~" +Math.round((response.query.results.channel.item.forecast[2].high-32)/1.8) +"°C";
+
+                t3Text= response.query.results.channel.item.forecast[3].day +", "
+                t3Text+= response.query.results.channel.item.forecast[3].date +"\n"
+                t3Text+= response.query.results.channel.item.forecast[3].text +":  "
+                t3Text+= Math.round((response.query.results.channel.item.forecast[3].low-32)/1.8) +"~" +Math.round((response.query.results.channel.item.forecast[3].high-32)/1.8) +"°C";
+
+                t4Text= response.query.results.channel.item.forecast[4].day +", "
+                t4Text+= response.query.results.channel.item.forecast[4].date +"\n"
+                t4Text+= response.query.results.channel.item.forecast[4].text +":  "
+                t4Text+= Math.round((response.query.results.channel.item.forecast[4].low-32)/1.8) +"~" +Math.round((response.query.results.channel.item.forecast[4].high-32)/1.8) +"°C";
+            }
+        }
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
+    }
+
 }
 

@@ -12,7 +12,6 @@ Item {
 
     // nhiet do
     property int temperature: 0
-    property string weather: ""
 
     // bien ngay hom nay
     property date today: new Date ()
@@ -31,7 +30,7 @@ Item {
     property string secondNumberImageSource: "/images/numbers/" + dateToShow%10 +".png"
     property string lunarDayImageSource: "/images/12ConGiap/" +DC.chiForDayImage[(Math.floor(CD.jdFromDate(dateToShow,monthToShow, yearToShow)+1.5)%12)]  +".png"
     property string lunarYearImageSource: "/images/12ConGiap/" +DC.chiForYearImage[(lunarYearNumber%12)] +".png"
-    property string weatherImageSource: "/images/weathers/" +(currentTime.getHours()>5 && (currentTime.getHours()<18) ?"day" :"night") +".png"
+    property string weatherImageSource: ""
 
     // luu gia tri ngay am lich
     property int lunarDayNumber: CD.getLunarDate(dateToShow, monthToShow, yearToShow)
@@ -59,18 +58,6 @@ Item {
         running: true
         onTriggered: {
             GW.getWeather()
-            if (weather.indexOf('Cloudy')!=-1) {
-                if (weather.indexOf('Mostly')!=-1 || (currentTime.getHours()<6 || currentTime.getHours()>18)) {
-                    weatherImageSource= "/images/weathers/cloudy.png"
-                } else {
-                    weatherImageSource= "/images/weathers/sunnycloudy.png"
-                }
-            } else if (weather.indexOf('Showers')!=-1) {
-                weatherImageSource= "/images/weathers/rainy.png"
-            } else {
-                weatherImageSource= "/images/weathers/" +(currentTime.getHours()>5 && (currentTime.getHours()<18) ?"day" :"night") +".png";
-            }
-
         }
     }
 
