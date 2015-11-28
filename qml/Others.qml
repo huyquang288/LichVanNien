@@ -130,7 +130,7 @@ Item {
                 anchors.top: name2.bottom
                 anchors.topMargin: name2.height/10
                 Image {
-                    height: t1.height*1.25
+                    height: t1.height* 1.25
                     width: parent.width
                     y: t1.y- t1.height*0.125
                     source: "/images/rectangle.png"
