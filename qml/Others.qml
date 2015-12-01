@@ -115,7 +115,7 @@ Item {
             }
             Text {
                 id: name2
-                text: "Weather"
+                text: "THỜI TIẾT"
                 font.pixelSize: parent.width/12
                 anchors.top: parent.top
                 anchors.topMargin: height/3*2
@@ -253,7 +253,7 @@ Item {
             }
             Text {
                 id: name3
-                text: "About"
+                text: "THÔNG TIN"
                 font.pixelSize: parent.width/12
                 anchors.top: parent.top
                 anchors.topMargin: height/3*2
@@ -305,7 +305,7 @@ Item {
             }
             Text {
                 id: name4
-                text: "Contact"
+                text: "LIÊN HỆ"
                 font.pixelSize: parent.width/12
                 anchors.top: parent.top
                 anchors.topMargin: height/3*2
@@ -481,7 +481,7 @@ Item {
             }
             Text {
                 id: name1
-                text: "World Clocks"
+                text: "GIỜ QUỐC TẾ"
                 font.pixelSize: parent.width/12
                 anchors.top: parent.top
                 anchors.topMargin: height/3*2

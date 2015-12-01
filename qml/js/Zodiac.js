@@ -17,7 +17,7 @@ function getIndex(numberOfZodiac) {
     switch (numberOfZodiac) {
         case aquariusNumber: {
             zodiacIconSource= "/images/zodiacs/aquarius.png";
-            focusZodiacName= "AQUARIUS"
+            focusZodiacName= "BẢO BÌNH"
             dayOfZodiac= "20/1→18/2"
             text1="Cung Bảo Bình được Thiên Vương Tinh bảo hộ, tượng trưng cho thần bầu trời Uranus."
             text2= "Ngày hôm nay của Bảo Bình  {｡^◕‿◔^｡}"
@@ -25,7 +25,7 @@ function getIndex(numberOfZodiac) {
         }
         case piscesNumber: {
             zodiacIconSource= "/images/zodiacs/pisces.png";
-            focusZodiacName= "PISCES"
+            focusZodiacName= "SONG NGƯ"
             dayOfZodiac= "19/2→20/3"
             text1="Cung Song Ngư được Hải Vương Tinh bảo hộ, tượng trưng cho thần biển Neptune (Poseidon)."
             text2= "Ngày hôm nay của Song Ngư  {｡^◕‿◔^｡}"
@@ -33,7 +33,7 @@ function getIndex(numberOfZodiac) {
         }
         case ariesNumber: {
             zodiacIconSource= "/images/zodiacs/aries.png";
-            focusZodiacName= "ARIES"
+            focusZodiacName= "BẠCH DƯƠNG"
             dayOfZodiac= "21/3→19/4"
             text1="Cung Bạch Dương được Hỏa Tinh bảo hộ, tượng trưng cho thần chiến tranh Mars trong thần thoại La Mã (Ares của thần thoại Hi Lạp)."
             text2= "Ngày hôm nay của Bạch Dương  {｡^◕‿◔^｡}"
@@ -41,7 +41,7 @@ function getIndex(numberOfZodiac) {
         }
         case taurusNumber: {
             zodiacIconSource= "/images/zodiacs/taurus.png";
-            focusZodiacName= "TAURUS"
+            focusZodiacName= "KIM NGƯU"
             dayOfZodiac= "20/4→20/5"
             text1="Cung Kim Ngưu được Kim Tinh bảo hộ, tượng trưng cho nữ thần Venus (Aphrodite của thần thoại Hi Lạp.)"
             text2= "Ngày hôm nay của Kim Ngưu  {｡^◕‿◔^｡}"
@@ -49,7 +49,7 @@ function getIndex(numberOfZodiac) {
         }
         case geminiNumber: {
             zodiacIconSource= "/images/zodiacs/gemini.png";
-            focusZodiacName= "GEMINI"
+            focusZodiacName= "SONG TỬ"
             dayOfZodiac= "21/5→21/6"
             text1="Cung Song Tử được Thủy Tinh bảo hộ, tượng trưng cho thần đưa tin Mercury (Hermes)."
             text2= "Ngày hôm nay của Song Tử  {｡^◕‿◔^｡}"
@@ -57,7 +57,7 @@ function getIndex(numberOfZodiac) {
         }
         case cancerNumber: {
             zodiacIconSource= "/images/zodiacs/cancer.png";
-            focusZodiacName= "CANCER"
+            focusZodiacName= "CỰ GIẢI"
             dayOfZodiac= "22/6→22/7"
             text1="Cung Cự Giải được Mặt Trăng bảo hộ, tượng trưng cho nữ thần hôn nhân gia đình Junon (Hera trong thần thoại Hi Lạp)"
             text2= "Ngày hôm nay của Cự Giải  {｡^◕‿◔^｡}"
@@ -65,7 +65,7 @@ function getIndex(numberOfZodiac) {
         }
         case leoNumber: {
             zodiacIconSource= "/images/zodiacs/leo.png";
-            focusZodiacName= "LEO"
+            focusZodiacName= "SƯ TỬ"
             dayOfZodiac= "23/7→22/8"
             text1="Cung Sư Tử được Mặt Trời bảo hộ, tượng trưng cho thần mặt trời Helios."
             text2= "Ngày hôm nay của Sư Tử  {｡^◕‿◔^｡}"
@@ -73,7 +73,7 @@ function getIndex(numberOfZodiac) {
         }
         case virgoNumber: {
             zodiacIconSource= "/images/zodiacs/virgo.png";
-            focusZodiacName= "VIRGO"
+            focusZodiacName= "XỬ NỮ"
             dayOfZodiac= "23/8→22/9"
             text1="Cung Xử Nữ được Thủy Tinh bảo hộ, tượng trưng cho trí tuệ, lòng chung thủy, cầu toàn nguyên tắc. (Demeter)"
             text2= "Ngày hôm nay của Xử Nữ  {｡^◕‿◔^｡}"
@@ -81,7 +81,7 @@ function getIndex(numberOfZodiac) {
         }
         case libraNumber: {
             zodiacIconSource= "/images/zodiacs/libra.png";
-            focusZodiacName= "LIBRA"
+            focusZodiacName= "THIÊN BÌNH"
             dayOfZodiac= "23/9→23/10"
             text1="Cung Thiên Bình được Kim Tinh bảo hộ, cung này biểu tượng cho sắc đẹp, sự quyến rũ, công bằng. Tượng trưng cho nữ thần Venus."
             text2= "Ngày hôm nay của Thiên Bình  {｡^◕‿◔^｡}"
@@ -89,7 +89,7 @@ function getIndex(numberOfZodiac) {
         }
         case scorpioNumber: {
             zodiacIconSource= "/images/zodiacs/scorpio.png";
-            focusZodiacName= "SCORPIO"
+            focusZodiacName= "BỌ CẠP"
             dayOfZodiac= "24/10→22/11"
             text1="Cung Hổ Cáp Diêm Vương Tinh bảo hộ, tượng trưng cho Pluto (Hades), thần cai quan âm phủ."
             text2= "Ngày hôm nay của Hổ Cáp  {｡^◕‿◔^｡}"
@@ -97,7 +97,7 @@ function getIndex(numberOfZodiac) {
         }
         case sagittariousNumber: {
             zodiacIconSource= "/images/zodiacs/sagittarious.png";
-            focusZodiacName= "SAGITTARIOUS"
+            focusZodiacName= "NHÂN MÃ"
             dayOfZodiac= "23/11→21/12"
             text1="Cung Nhân Mã được Mộc Tinh bảo hộ, tượng trưng cho thần sấm sét Jupiter (Zeus)."
             text2= "Ngày hôm nay của Nhân Mã  {｡^◕‿◔^｡}"
@@ -105,7 +105,7 @@ function getIndex(numberOfZodiac) {
         }
         case capricornNumber: {
             zodiacIconSource= "/images/zodiacs/capricorn.png";
-            focusZodiacName= "CAPRICORN"
+            focusZodiacName= "MA KẾT"
             dayOfZodiac= "22/12→19/1"
             text1="Cung Ma Kết được Thổ Tinh bảo hộ, tượng trưng cho thần bầu trời Saturn (Cronos)."
             text2= "Ngày hôm nay của Ma Kết  {｡^◕‿◔^｡}"

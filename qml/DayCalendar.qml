@@ -8,7 +8,7 @@ Item {
     id: dayCal
 
     // bien thoi gian
-    property date currentTime: new Date()
+
 
     // nhiet do
     property int temperature: 0
@@ -31,6 +31,7 @@ Item {
     property string lunarDayImageSource: "/images/12ConGiap/" +DC.chiForDayImage[(Math.floor(CD.jdFromDate(dateToShow,monthToShow, yearToShow)+1.5)%12)]  +".png"
     property string lunarYearImageSource: "/images/12ConGiap/" +DC.chiForYearImage[(lunarYearNumber%12)] +".png"
     property string weatherImageSource: ""
+    property string tt3Text
 
     // luu gia tri ngay am lich
     property int lunarDayNumber: CD.getLunarDate(dateToShow, monthToShow, yearToShow)
@@ -39,22 +40,16 @@ Item {
 
     // su kien vuot trai, phai de chuyen ngay
     property double mouseEnteredX: -1;
-    Component.onCompleted: {
-        //CD.convertSolar2Lunar(3, 11, 2015, 0);
-    }
 
-    // su dung de update thoi gian lien tuc moi 30s
     Timer {
-        interval: 60000
+        interval: 1500
         running: true
-        repeat: true
         onTriggered: {
-            currentTime= new Date();
+            GW.getWeather()
         }
     }
-
     Timer {
-        interval: 7500
+        interval: 8000
         running: true
         onTriggered: {
             GW.getWeather()
@@ -117,6 +112,14 @@ Item {
             anchors.fill: parent
         }
 
+        MouseArea {
+            anchors.fill: parent
+            onClicked:  {
+                dayDetailRect.visible= false
+            }
+        }
+
+
         Rectangle {
             id: square
             y: height/20
@@ -130,6 +133,7 @@ Item {
                 enabled: true;
                 onEntered:  {
                     mouseEnteredX= mouseX
+                    currentTime= new Date();
                     //mouseEnteredY= mouseY
                 }
 
@@ -307,12 +311,23 @@ Item {
                 width: rect.width/2.8
                 height: rect.height/3.8
                 onClicked: {
-
+                    dayDetailRect.visible= true
+                    ani1.start()
                 }
                 onPressed: opacity=0.6
                 onReleased: opacity=1
             }
         }
+
+        NumberAnimation {
+            id: ani1
+            target: dayDetailRect
+            property: "opacity"
+            duration: 350
+            from: 0
+            to: 1
+        }
+
 
         Text {
             id: day1
@@ -392,6 +407,77 @@ Item {
             anchors.top: yea2.bottom
             anchors.topMargin: font.pixelSize/10
             x: (appWidth/3- width)/2 +appWidth/3*2
+        }
+
+        Rectangle {
+            id: dayDetailRect
+            width: parent.width*0.9
+            height: parent.height*0.9
+            anchors.top: parent.top
+            anchors.topMargin: (parent.height- height)/2
+            anchors.left: parent.left
+            anchors.leftMargin: parent.width*0.05
+            visible: false
+            Image {
+                source: "/images/rectangle.png"
+                anchors.fill: parent
+            }
+            Text {
+                id: nameee
+                text: "CHI TIẾT"
+                font.pixelSize: parent.width/12
+                anchors.top: parent.top
+                anchors.topMargin: height/3*2
+                x: (parent.width- width)/2
+            }
+            MouseArea {
+                anchors.fill: parent
+                onEntered:  {
+                    mouseEnteredX= mouseX
+                }
+                onReleased: {
+                    if (mouseEnteredX- mouseX > appWidth/3) {
+                        changeTabToRight()
+                        mouseEnteredX= -1;
+                        hideRowOfMainButtonEffect();
+                    }
+                    else if (mouseX- mouseEnteredX > appWidth/3) {
+                        changeTabToLeft();
+                        mouseEnteredX= -1;
+                        hideRowOfMainButtonEffect();
+                    }
+                }
+            }
+            Text {
+                id: tt1
+                font.pixelSize: appWidth/25
+                horizontalAlignment: Text.AlignHCenter
+                color: "#070777"
+                text: DC.weekday[dayToShow] +", " +dateToShow +"/" +monthToShow +"/" +yearToShow +"\n" +lunarDayNumber +"/" +lunarMonthNumber +"/" +lunarYearNumber +" Âm lịch"
+                x: (parent.width- width)/2
+                anchors.top: nameee.bottom
+                anchors.topMargin: height/2
+            }
+            Text {
+                id: tt2
+                font.pixelSize: appWidth/28
+                //horizontalAlignment: Text.AlignHCenter
+                color: "#070777"
+                text: "Ngày hoàng đạo\n\tGiờ hoàng đạo: 13h-16h\n\tViệc nên làm: Báo cáo bài tập lớn"
+                x: parent.width/10
+                anchors.top: tt1.bottom
+                anchors.topMargin: parent.width/10
+            }
+            Text {
+                id: tt3
+                font.pixelSize: appWidth/28
+                //horizontalAlignment: Text.AlignHCenter
+                color: "#070777"
+                text: tt3Text
+                x: parent.width/10
+                anchors.top: tt2.bottom
+                anchors.topMargin: parent.width/30
+            }
         }
 
     }

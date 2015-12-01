@@ -13,6 +13,8 @@ Rectangle {
     property double mouseEnteredX: -1
     property int numberOfTabs: 5
 
+    property date currentTime: new Date()
+
     // Put the name of the QML files containing your pages (without the '.qml')
     property variant pagesList  : [
         "MainMenu"
@@ -164,11 +166,12 @@ Rectangle {
             source: "/images/dayCalendar.png"
             opacity: 0.7 //default
             onClicked: {
+                currentTime= new Date()
                 hideAllTabs();
                 dayCalendarTab.visible= true
                 changeTabByClick.start()
                 currentTab= "dayCalendarTab"
-                hideRowOfMainButtonEffect();
+                hideRowOfMainButtonEffect();                
             }
             onPressed: opacity=0.6
             onReleased: opacity=1
@@ -179,6 +182,7 @@ Rectangle {
             height: parent.height
             source: "/images/monthCalendar.png"
             onClicked: {
+                currentTime= new Date()
                 hideAllTabs()
                 monthCalendarTab.visible= true
                 changeTabByClick.start()
@@ -194,6 +198,7 @@ Rectangle {
             height: parent.height
             source: "/images/switchDay.png"
             onClicked: {
+                currentTime= new Date()
                 hideAllTabs();
                 daySwitchTab.visible= true;
                 changeTabByClick.start()
@@ -209,6 +214,7 @@ Rectangle {
             height: parent.height
             source: "/images/zodiac.png"
             onClicked: {
+                currentTime= new Date()
                 hideAllTabs()
                 zodiacTab.visible= true;
                 changeTabByClick.start()
@@ -224,6 +230,7 @@ Rectangle {
             height: parent.height
             source: "/images/others.png"
             onClicked: {
+                currentTime= new Date()
                 hideAllTabs();
                 othersTab.visible= true;
                 changeTabByClick.start()
@@ -338,6 +345,7 @@ Rectangle {
     }
 
     function changeTabToRight () {
+        currentTime= new Date()
         switch (currentTab) {
         case "dayCalendarTab":
             hideAllTabs()
@@ -367,6 +375,7 @@ Rectangle {
     }
 
     function changeTabToLeft () {
+        currentTime= new Date()
         switch (currentTab) {
         case "othersTab":
             hideAllTabs()

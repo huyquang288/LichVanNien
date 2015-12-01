@@ -11,10 +11,12 @@ function getWeather() {
             var end= weatherSource.indexOf('.gif')
             weatherImageSource= weatherSource.substring(begin, end+4)
 
-            t1Text= response.query.results.channel.item.forecast[1].day +", "
-            t1Text+= response.query.results.channel.item.forecast[1].date +"\n"
-            t1Text+= response.query.results.channel.item.forecast[1].text +"  "
-            t1Text+= Math.round(response.query.results.channel.item.forecast[1].low-32)/1.8 +"~" +Math.round(response.query.results.channel.item.forecast[1].high-32)/1.8
+            tt3Text= "Thời tiết\n\tNhiệt độ:"
+            tt3Text+= (Math.round((response.query.results.channel.item.forecast[0].low-32)/1.8) +"~" +Math.round((response.query.results.channel.item.forecast[0].high-32)/1.8) +"°C\n\t")
+            tt3Text+= ("Độ ẩm: " +response.query.results.channel.atmosphere.humidity +"%\n\t")
+            tt3Text+= ("Tầm nhìn xa: ~" +Math.round(response.query.results.channel.atmosphere.visibility/0.6214) +"km\n\t")
+            tt3Text+= ("Mặt trời mọc: " +response.query.results.channel.astronomy.sunrise +"\n\t")
+            tt3Text+= ("Mặt trời lặn: " +response.query.results.channel.astronomy.sunset)
         }
     }
     xmlhttp.open("GET", url, true);
