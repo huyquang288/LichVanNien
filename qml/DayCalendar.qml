@@ -114,8 +114,23 @@ Item {
 
         MouseArea {
             anchors.fill: parent
-            onClicked:  {
-                dayDetailRect.visible= false
+            onEntered:  {
+                mouseEnteredX= mouseX
+            }
+            onReleased: {
+                if (mouseEnteredX- mouseX > appWidth/3) {
+                    changeTabToRight()
+                    mouseEnteredX= -1;
+                    hideRowOfMainButtonEffect();
+                }
+                else if (mouseX- mouseEnteredX > appWidth/3) {
+                    changeTabToLeft();
+                    mouseEnteredX= -1;
+                    hideRowOfMainButtonEffect();
+                }
+                else if (Math.abs(mouseX- mouseEnteredX)<10) {
+                    dayDetailRect.visible= false
+                }
             }
         }
 
@@ -461,7 +476,6 @@ Item {
             Text {
                 id: tt2
                 font.pixelSize: appWidth/28
-                //horizontalAlignment: Text.AlignHCenter
                 color: "#070777"
                 text: "Ngày hoàng đạo\n\tGiờ hoàng đạo: 13h-16h\n\tViệc nên làm: Báo cáo bài tập lớn"
                 x: parent.width/10
@@ -471,12 +485,11 @@ Item {
             Text {
                 id: tt3
                 font.pixelSize: appWidth/28
-                //horizontalAlignment: Text.AlignHCenter
                 color: "#070777"
                 text: tt3Text
                 x: parent.width/10
                 anchors.top: tt2.bottom
-                anchors.topMargin: parent.width/30
+                anchors.topMargin: parent.width/22
             }
         }
 
