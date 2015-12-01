@@ -9,6 +9,7 @@ Item {
     property string t2Text
     property string t3Text
     property string t4Text
+    property double mouseEnteredX: -1
 
     Rectangle {        
         anchors.fill: parent
@@ -119,6 +120,24 @@ Item {
                 anchors.top: parent.top
                 anchors.topMargin: height/3*2
                 x: (parent.width- width)/2
+            }
+            MouseArea {
+                anchors.fill: parent
+                onEntered:  {
+                    mouseEnteredX= mouseX
+                }
+                onReleased: {
+                    if (mouseEnteredX- mouseX > appWidth/3) {
+                        changeTabToRight()
+                        mouseEnteredX= -1;
+                        hideRowOfMainButtonEffect();
+                    }
+                    else if (mouseX- mouseEnteredX > appWidth/3) {
+                        changeTabToLeft();
+                        mouseEnteredX= -1;
+                        hideRowOfMainButtonEffect();
+                    }
+                }
             }
 
 
@@ -240,6 +259,24 @@ Item {
                 anchors.topMargin: height/3*2
                 x: (parent.width- width)/2
             }
+            MouseArea {
+                anchors.fill: parent
+                onEntered:  {
+                    mouseEnteredX= mouseX
+                }
+                onReleased: {
+                    if (mouseEnteredX- mouseX > appWidth/3) {
+                        changeTabToRight()
+                        mouseEnteredX= -1;
+                        hideRowOfMainButtonEffect();
+                    }
+                    else if (mouseX- mouseEnteredX > appWidth/3) {
+                        changeTabToLeft();
+                        mouseEnteredX= -1;
+                        hideRowOfMainButtonEffect();
+                    }
+                }
+            }
             Text {
                 wrapMode: Text.Wrap
                 color: "#070777"
@@ -273,6 +310,24 @@ Item {
                 anchors.top: parent.top
                 anchors.topMargin: height/3*2
                 x: (parent.width- width)/2
+            }
+            MouseArea {
+                anchors.fill: parent
+                onEntered:  {
+                    mouseEnteredX= mouseX
+                }
+                onReleased: {
+                    if (mouseEnteredX- mouseX > appWidth/3) {
+                        changeTabToRight()
+                        mouseEnteredX= -1;
+                        hideRowOfMainButtonEffect();
+                    }
+                    else if (mouseX- mouseEnteredX > appWidth/3) {
+                        changeTabToLeft();
+                        mouseEnteredX= -1;
+                        hideRowOfMainButtonEffect();
+                    }
+                }
             }
 
             Image {
@@ -431,6 +486,24 @@ Item {
                 anchors.top: parent.top
                 anchors.topMargin: height/3*2
                 x: (parent.width- width)/2
+            }
+            MouseArea {
+                anchors.fill: parent
+                onEntered:  {
+                    mouseEnteredX= mouseX
+                }
+                onReleased: {
+                    if (mouseEnteredX- mouseX > appWidth/3) {
+                        changeTabToRight()
+                        mouseEnteredX= -1;
+                        hideRowOfMainButtonEffect();
+                    }
+                    else if (mouseX- mouseEnteredX > appWidth/3) {
+                        changeTabToLeft();
+                        mouseEnteredX= -1;
+                        hideRowOfMainButtonEffect();
+                    }
+                }
             }
 
             Content.Clock {
