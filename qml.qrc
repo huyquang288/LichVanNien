@@ -121,5 +121,6 @@
         <file>images/hoan.png</file>
         <file>images/hung.png</file>
         <file>images/phuc.png</file>
+        <file>images/zodiacsText.png</file>
     </qresource>
 </RCC>

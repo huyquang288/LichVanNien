@@ -54,31 +54,21 @@ Item {
                 }
             }
         }
-        Rectangle {
+
+        Image {
             id: topBanner
-            width: appWidth
-            height: appHight/7
-            x: 0
-            y: 0
-            color: "skyblue"
-            Text {
-                y: 0
-                x: 50
-                id: tabName
-                text: qsTr("Ngày hôm nay của")
-            }
-            Text {
-                y: 40
-                x: 50
-                text: qsTr("12 cung hoàng đạo")
-            }
+            width: appWidth*0.9
+            height: appHight/8
+            x: appWidth*0.05
+            y: x*0.75
+            source: "/images/zodiacsText.png"
         }
 
         // bao binh
         Rectangle {
             id: aquarius
             anchors.top: topBanner.bottom
-            anchors.topMargin: height
+            anchors.topMargin: height*0.75
             height: (parent.height- topBanner.height)/18
             width: parent.width*0.8
             anchors.left: parent.left
