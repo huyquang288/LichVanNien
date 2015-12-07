@@ -251,13 +251,19 @@ Item {
                 source: "/images/rectangle.png"
                 anchors.fill: parent
             }
-            Text {
+            Image {
                 id: name3
-                text: "THÔNG TIN"
-                font.pixelSize: parent.width/12
+                source: "/images/topBanner.png"
+                width: parent.width
+                height: appHight/6
                 anchors.top: parent.top
-                anchors.topMargin: height/3*2
-                x: (parent.width- width)/2
+            }
+            Image {
+                source: "/images/appName.png"
+                width: name3.width*0.6
+                x: name3.width*0.2
+                height: name3.height/2.2
+                y: name3.height/4.4
             }
             MouseArea {
                 anchors.fill: parent
@@ -285,7 +291,7 @@ Item {
                 text: qsTr("Ứng dụng lịch vạn niên được viết bởi nhóm NoName là ứng dụng lịch của người trẻ, ứng dụng được tạo ra với mong muống phục vụ nhu cầu tra cứu ngày tháng, cập nhật thời tiết, giờ tại các quốc gia trên thế giới.");
                 width: parent.width*0.85
                 anchors.top: name3.bottom
-                anchors.topMargin: name3.height*0.75
+                anchors.topMargin: name3.height*0.25
                 x: (parent.width- width)/2
                 horizontalAlignment: Text.AlignHCenter
             }
