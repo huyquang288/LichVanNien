@@ -263,4 +263,18 @@ function getVNeseNameDay (dd, mm, yy) {
     return d;    
 }
 
-
+function getDayForMonthCalendar (dd, mm, yy) {
+    if (typeof dd === 'string' || dd instanceof String) {
+        dd= parseInt(dd);
+    }
+    if (typeof mm === 'string' || mm instanceof String) {
+        mm= parseInt(mm);
+    }
+    if (typeof yy === 'string' || yy instanceof String) {
+        yy= parseInt(yy);
+    }
+    var d= getLunarDate(dd, mm, yy)
+    d+= "/"
+    d+= getLunarMonth()
+    return d;
+}
