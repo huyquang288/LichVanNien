@@ -562,7 +562,7 @@ Item {
                 color: "#070777"
                 anchors.top: t1.bottom
                 anchors.topMargin: (parent.height- t1.y- t1.height- height*6- 5*focusZodiacDay.height/2)/2
-                anchors.left: t1.left
+                x: (parent.width- width)/2
             }
             Text {
                 id: t3
@@ -571,7 +571,7 @@ Item {
                 color: "orange"
                 anchors.top: t2.bottom
                 anchors.topMargin: focusZodiacDay.height/2
-                anchors.left: t1.left
+                x: (parent.width- t6.width- t3.height*5.2)/2
             }
             Image {
                 source: luckyHeartsSource
@@ -587,7 +587,7 @@ Item {
                 color: "orange"
                 anchors.top: t3.bottom
                 anchors.topMargin: focusZodiacDay.height/2
-                anchors.left: t1.left
+                anchors.left: t3.left
             }
             Image {
                 source: moneyHeartsSource
@@ -603,7 +603,7 @@ Item {
                 color: "orange"
                 anchors.top: t4.bottom
                 anchors.topMargin: focusZodiacDay.height/2
-                anchors.left: t1.left
+                anchors.left: t3.left
             }
             Image {
                 source: loveHeartsSource
@@ -619,7 +619,7 @@ Item {
                 color: "orange"
                 anchors.top: t5.bottom
                 anchors.topMargin: focusZodiacDay.height/2
-                anchors.left: t1.left
+                anchors.left: t3.left
             }
             Image {
                 source: emotionHeartsSource
@@ -635,7 +635,7 @@ Item {
                 color: "orange"
                 anchors.top: t6.bottom
                 anchors.topMargin: focusZodiacDay.height/2
-                anchors.left: t1.left
+                anchors.left: t3.left
             }
             Image {
                 source: workHeartsSource

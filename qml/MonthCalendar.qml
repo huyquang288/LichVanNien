@@ -113,7 +113,7 @@ Item {
                         id: eventDateRow
                         width: parent.width
                         height: eventDayLabel.height*1.1
-                        spacing: 10
+                        spacing: 25
 
                         Text {
                             id: eventDayLabel
