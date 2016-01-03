@@ -525,7 +525,7 @@ Item {
                 id: clo2
                 anchors.top: clo1.top
                 anchors.right: parent.right
-                anchors.rightMargin: (parent.width*0.2/3)*scale
+                anchors.rightMargin: (parent.width*0.2/7)*scale
                 scale: clo1.scale
                 city: "London"; shift: 0
             }
@@ -539,6 +539,41 @@ Item {
             }
             Content.Clock {
                 id: clo4
+                anchors.top: clo3.top
+                anchors.right: clo2.right
+                scale: clo1.scale
+                city: "Tokyo"; shift: 9
+            }
+            Content.Clock {
+                id: clo5
+                anchors.top: clo3.top
+                anchors.right: clo2.right
+                scale: clo1.scale
+                city: "Tokyo"; shift: 9
+            }
+            Content.Clock {
+                id: clo6
+                anchors.top: clo3.top
+                anchors.right: clo2.right
+                scale: clo1.scale
+                city: "Tokyo"; shift: 9
+            }
+            Content.Clock {
+                id: clo7
+                anchors.top: clo3.top
+                anchors.right: clo2.right
+                scale: clo1.scale
+                city: "Tokyo"; shift: 9
+            }
+            Content.Clock {
+                id: clo8
+                anchors.top: clo3.top
+                anchors.right: clo2.right
+                scale: clo1.scale
+                city: "Tokyo"; shift: 9
+            }
+            Content.Clock {
+                id: clo9
                 anchors.top: clo3.top
                 anchors.right: clo2.right
                 scale: clo1.scale

@@ -99,8 +99,8 @@ Item {
             Rectangle {
                 id: eventListHeader
                 anchors.top: parent.top
-                anchors.topMargin: eventDayLabel.height/5
-                height: eventDateRow.height +5
+                anchors.topMargin: eventDayLabel.height/15
+                height: eventDateRow.height+3
                 width: eventDayLabel.width +20 +monthAndYear.width
                 x: (parent.width- width)/2
 
@@ -108,7 +108,7 @@ Item {
                     id: eventDateColumn
                     width: parent.width
                     height: parent.height
-                    spacing: 20
+                    spacing: 15
                     Row {
                         id: eventDateRow
                         width: parent.width
@@ -146,10 +146,10 @@ Item {
                 Text {
                     id: globalEventDay
                     anchors.top: eventListHeader.bottom
-                    anchors.topMargin: height/10
+                    anchors.topMargin: -10
                     x: (parent.width- width)/2
                     text: dayEvent (calendar.selectedDate);
-                    font.pointSize: monthCalendar.width/25
+                    font.pointSize: monthCalendar.width/28
                     wrapMode: Text.Wrap
                     color: "#ff7f00"
                 }
@@ -157,7 +157,7 @@ Item {
                 Text {
                     id: day2
                     anchors.top: (globalEventDay.text!='') ?globalEventDay.bottom :eventListHeader.bottom
-                    anchors.topMargin: day2.height/5 +5
+                    anchors.topMargin: day2.height/5.5
                     font.pixelSize: monthCalendar.width/25
                     color: "#093e9b"
                     x: (parent.width- width)/2
@@ -166,26 +166,13 @@ Item {
                 Text {
                     id: day3
                     anchors.top: day2.bottom
-                    anchors.topMargin: day2.height/5
+                    anchors.topMargin: day2.height/6
                     font.pixelSize: monthCalendar.width/25
                     color: "#093e9b"
                     x: (parent.width- width)/2
                     text: CD.getVNeseNameDay(calendar.selectedDate.getDate(), calendar.selectedDate.getMonth()+1, calendar.selectedDate.getFullYear())
                 }
             }
-
-            /*
-            ListView {
-                id: eventsListView
-                spacing: 15
-                clip: true
-                header: eventListHeader
-                width: parent.width
-                height: parent.height
-                anchors.top: parent.top
-                anchors.margins: 15
-            }
-            */
         }
 
         MouseArea {
@@ -273,121 +260,3 @@ Item {
 }
 
 
-
-
-
-
-/*
-
-import QtQuick 2.4
-import QtQuick.Controls 1.4
-import QtQuick.Controls.Styles 1.4
-import "js/ConvertDay.js" as CD1
-
-Item {
-    id: monCal
-    //signal clicked ()
-}
-
-    Rectangle {
-        anchors.fill: parent
-        MouseArea {
-            //anchors.fill: parent
-            onClicked: {
-                monCal.clicked ()
-
-            }
-        }
-
-        Calendar {
-            id: calendar
-            anchors.top: parent.top
-            anchors.topMargin: (parent.height- height)/5
-            width: parent.width
-            height: width
-            weekNumbersVisible: true
-
-            style: CalendarStyle {
-                gridVisible: false
-                dayDelegate: Rectangle {
-                    gradient: Gradient {
-                        // gia tri cuoi cung la danh dau ngay do khong nam trong thang =)))
-                        // #ff7c02: da cam nhat
-                        GradientStop {
-                            position: 0.00
-                            //#111
-                            color: styleData.selected ? "#111" : (styleData.visibleMonth && styleData.valid ? "#186005" : "#666");
-                        }
-                        GradientStop {
-                            position: 1.00
-                            //#111 khong giai quyet van de gi
-                            color: styleData.selected ? "#444" : (styleData.visibleMonth && styleData.valid ? "#111" : "#666");
-                        }
-                        GradientStop {
-                            position: 1.00
-                            //#777
-                            color: styleData.selected ? "red" : (styleData.visibleMonth && styleData.valid ? "#25a508" : "#666");
-                        }
-                    }
-
-                    // so hien thi trong khung thang
-                    Label {
-                        text: styleData.date.getDate()
-                        anchors.centerIn: parent
-                        color: styleData.valid ? "white" : "grey"
-                    }
-
-                    // duong ke ngang
-                    Rectangle {
-                        width: parent.width
-                        height: 1
-                        color: "#555"
-                        anchors.bottom: parent.bottom
-                    }
-
-                    // duong ke doc
-                    Rectangle {
-                        width: 1
-                        height: parent.height
-                        color: "#555"
-                        anchors.right: parent.right
-                    }
-                }
-            }
-            onPressAndHold: {
-                console.log(selectedDate)
-            }
-        }
-/*
-        Text {
-            id: day1
-            anchors.top: calendar.bottom
-            anchors.topMargin: height/4
-            font.pixelSize:
-            color: "#070777"
-            x: (parent.width- width)/2
-            text: calendar.selectedDate.getDate() +"/" +(calendar.selectedDate.getMonth()+1) +"/" +calendar.selectedDate.getFullYear()
-        }
-        Text {
-            id: day2
-            anchors.top: day1.bottom
-            anchors.topMargin: day1.height/4
-            font.pixelSize: parent.width/25
-            color: "#093e9b"
-            x: (parent.width- width)/2
-            text: CD1.getLunarFullDate(calendar.selectedDate.getDate(), calendar.selectedDate.getMonth()+1, calendar.selectedDate.getFullYear())+" Âm lịch"
-        }
-        Text {
-            id: day3
-            anchors.top: day2.bottom
-            anchors.topMargin: day1.height/4
-            font.pixelSize: parent.width/25
-            color: "#093e9b"
-            x: (parent.width- width)/2
-            text: CD1.getVNeseNameDay(calendar.selectedDate.getDate(), calendar.selectedDate.getMonth()+1, calendar.selectedDate.getFullYear())
-        }
-    }
-
-}
-
-*/
