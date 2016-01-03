@@ -514,70 +514,73 @@ Item {
 
             Content.Clock {
                 id: clo1
-                scale: (parent.width/2.5)/width
+                scale: (parent.width/3.75)/width
                 anchors.top: name1.bottom
-                anchors.topMargin: (parent.height- ((height*2- name1.height))*scale)/2.75
+                anchors.topMargin: (parent.height- ((height*2- name1.height))*scale)/10
                 anchors.left: parent.left
-                anchors.leftMargin: (parent.width*0.2/3)*scale
+                anchors.leftMargin: (parent.width/12.5)*scale
                 city: "New York"; shift: -4
             }
             Content.Clock {
                 id: clo2
                 anchors.top: clo1.top
-                anchors.right: parent.right
-                anchors.rightMargin: (parent.width*0.2/7)*scale
+                anchors.left: clo1.right
+                anchors.leftMargin: (parent.width/13.5)*scale
                 scale: clo1.scale
-                city: "London"; shift: 0
+                city: "Hà Nội"; shift: 7
             }
             Content.Clock {
                 id: clo3
-                anchors.top: clo1.bottom
-                anchors.topMargin: name1.height*scale*1.2
-                anchors.left: clo1.left
+                anchors.top: clo1.top
+                anchors.left: clo2.right
+                anchors.leftMargin: (parent.width/13.5)*scale
                 scale: clo1.scale
-                city: "Mumbai"; shift: 5.5
+                city: "London"; shift: 0
+
             }
             Content.Clock {
                 id: clo4
-                anchors.top: clo3.top
-                anchors.right: clo2.right
+                anchors.top: clo1.bottom
+                anchors.topMargin: (parent.width/13)*scale
+                anchors.left: clo1.left
                 scale: clo1.scale
                 city: "Tokyo"; shift: 9
             }
             Content.Clock {
                 id: clo5
-                anchors.top: clo3.top
-                anchors.right: clo2.right
+                anchors.top: clo4.top
+                anchors.left: clo2.left
                 scale: clo1.scale
-                city: "Tokyo"; shift: 9
+                city: "Mumbai"; shift: 5.5
             }
             Content.Clock {
                 id: clo6
-                anchors.top: clo3.top
-                anchors.right: clo2.right
+                anchors.top: clo4.top
+                anchors.left: clo3.left
                 scale: clo1.scale
-                city: "Tokyo"; shift: 9
+                city: "Moscow"; shift: 3
             }
             Content.Clock {
                 id: clo7
-                anchors.top: clo3.top
-                anchors.right: clo2.right
+                anchors.top: clo4.bottom
+                anchors.topMargin: (parent.width/11)*scale
+                anchors.left: clo1.left
                 scale: clo1.scale
-                city: "Tokyo"; shift: 9
+                city: "Custom Clock"; shift: 0
             }
             Content.Clock {
                 id: clo8
-                anchors.top: clo3.top
-                anchors.right: clo2.right
+                anchors.top: clo7.top
+                anchors.left: clo2.left
                 scale: clo1.scale
-                city: "Tokyo"; shift: 9
+                city: "Custom Clock"; shift: 0
             }
             Content.Clock {
                 id: clo9
-                anchors.top: clo3.top
-                anchors.right: clo2.right
+                anchors.top: clo7.top
+                anchors.left: clo3.left
                 scale: clo1.scale
-                city: "Tokyo"; shift: 9
+                city: "Custom Clock"; shift: 0
             }
         }
 

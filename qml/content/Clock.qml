@@ -39,6 +39,7 @@
 ****************************************************************************/
 
 import QtQuick 2.0
+import QtQuick.Controls 1.4
 
 Item {
     id : clock
@@ -71,6 +72,14 @@ Item {
         minutes = internationalTime ? date.getUTCMinutes() + ((clock.shift % 1) * 60) : date.getMinutes()
         seconds = date.getUTCSeconds();
     }
+
+    MouseArea {
+        anchors.fill: parent
+        onPressAndHold: {
+            changeRec.visible= true;
+        }
+    }
+
 
     Timer {
         interval: 100; running: true; repeat: true;
@@ -135,4 +144,68 @@ Item {
             font.pixelSize: appWidth/47
         }
     }
+
+    Rectangle {
+        id: changeRec
+        anchors.fill: parent
+        visible: false
+        Image {
+            anchors.fill: parent
+            source: "rec.png"
+        }
+        TextField {
+            id: newName
+            anchors.top: parent.top
+            anchors.topMargin: parent.height/17.5
+            height: parent.height/3.75
+            width: parent.width
+            placeholderText: qsTr("City name")
+            font.pixelSize: height/2.5
+
+        }
+        ComboBox {
+            id: newTimezone
+            height: parent.height/5
+            width: parent.width*1.065
+            anchors.top: newName.bottom
+            anchors.topMargin: parent.height/10
+            anchors.left: parent.left
+            anchors.leftMargin: -parent.width*0.0475
+            model: ["Timezone", "UTC-12", "UTC-11", "UTC-10", "UTC-9", "UTC-8", "UTC-7", "UTC-6", "UTC-5", "UTC-4", "UTC-3", "UTC-2", "UTC-1", "UTC+0", "UTC+1", "UTC+2", "UTC+3", "UTC+4", "UTC+5", "UTC+6", "UTC+7", "UTC+8", "UTC+9", "UTC+10", "UTC+11", "UTC+12"]
+        }
+        Image {
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: parent.height/25
+            anchors.right: parent.right
+            height: parent.height/4
+            width: parent.width/2.2
+            source: "save.png"
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    changeRec.visible= false
+                    if (newTimezone.currentIndex!=0 && newName.text!='') {
+                        city= newName.text
+                        shift= newTimezone.currentIndex-13
+                    }
+                }
+            }
+        }
+        Image{
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: parent.height/25
+            anchors.left: parent.left
+            source:  "cancel.png"
+            height: parent.height/4
+            width: parent.width*(1-1/2.2)
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    changeRec.visible= false
+                }
+            }
+        }
+
+    }
+
 }

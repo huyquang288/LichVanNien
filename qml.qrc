@@ -122,5 +122,8 @@
         <file>images/hung.png</file>
         <file>images/phuc.png</file>
         <file>images/zodiacsText.png</file>
+        <file>qml/content/rec.png</file>
+        <file>qml/content/cancel.png</file>
+        <file>qml/content/save.png</file>
     </qresource>
 </RCC>
